@@ -5,7 +5,6 @@ export const questionAndAnswers = [
         questionedBy: "Rahul Kumar",
         question: "What is the famous food of Agra?",
         answer: "Petha is the famous sweet of Agra",
-
     },
     {
         id: "2",
@@ -13,7 +12,6 @@ export const questionAndAnswers = [
         questionedBy: "Jatin Rawat",
         question: "What color is the sky?",
         answer: "The sky is of color blue.The color is blue because The Raman Effect",
-
     },
     {
         id: "3",
@@ -21,7 +19,6 @@ export const questionAndAnswers = [
         questionedBy: "Vishal",
         question: "When did the world war start?",
         answer: "The world war 1 started in 1914",
-
     }
 ];
 

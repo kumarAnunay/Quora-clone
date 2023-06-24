@@ -43,7 +43,6 @@ const Signup = () => {
           username: name,
           email: email,
           password: password,
-          islogged: false,
         })
       );
 

@@ -16,15 +16,15 @@ const Home = () => {
   };
 
   const questionHandler = () => {
-    navigate("questions");
+    navigate("/questions");
   };
 
   const answerHandler = () => {
-    navigate("answers");
+    navigate("/answers");
   };
 
   const logoutHandler = () => {
-    localStorage.setItem("user", JSON.stringify({ ...user, islogged: false }));
+    localStorage.removeItem("user");
     navigate("/");
   };
 

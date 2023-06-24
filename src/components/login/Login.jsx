@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import { user } from "../../getUser";
+import { getItem } from "../../getUser";
 import "./Login.css";
 
 const Login = () => {
+  const userRef = useRef(getItem("user"));
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,18 +18,24 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (email !== user?.email) {
+    if (email !== userRef.current?.email) {
       emailRef.current.style.outlineColor = "red";
       emailRef.current.focus();
       emailErrorRef.current.style.display = "block";
     }
-    if (password !== user?.password) {
+    if (password !== userRef.current?.password) {
       passwordRef.current.style.outlineColor = "red";
       passwordRef.current.focus();
       passwordErrorRef.current.style.display = "block";
     }
-    if (email === user?.email && password === user?.password) {
-      localStorage.setItem("user", JSON.stringify({ ...user, islogged: true }));
+    if (
+      email === userRef.current?.email &&
+      password === userRef.current?.password
+    ) {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({ ...userRef.current, islogged: true })
+      );
       navigate("/home");
     }
   };
@@ -41,13 +49,6 @@ const Login = () => {
     setPassword(e.target.value);
     passwordErrorRef.current.style.display = "none";
   };
-
-  useEffect(() => {
-    emailRef.current.focus();
-    if (user?.islogged) {
-      navigate("/home");
-    }
-  }, [user?.islogged]);
 
   return (
     <div className="login">
