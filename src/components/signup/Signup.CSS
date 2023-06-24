@@ -1,0 +1,135 @@
+.signup {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 450px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: #FCF9F9;
+    text-align: center;
+    padding: 20px;
+}
+
+.title {
+    padding: 10px 0px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #130f40;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.signup_form {
+    padding: 10px 40px;
+}
+
+label {
+    font-size: 18px;
+    color: #130f40;
+}
+
+input {
+    font-size: 15px;
+    height: 40px;
+    width: 100%;
+    padding: 0 5px;
+    outline-color: rgb(33, 150, 243);
+    border: 1px solid silver;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input::placeholder {
+    opacity: 0.5;
+}
+
+input[type='text'] {
+    margin-bottom: 10px;
+}
+
+button {
+    margin: 30px 0 20px 0;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    color: #fff;
+    background-color: rgb(33, 150, 243);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all ease 0.4s;
+    box-shadow: 0 3px rgba(0, 0, 0, 0.7);
+}
+
+button:active {
+    transform: translate(0, 2px);
+    box-shadow: 0 2px rgba(0, 0, 0, 0.7);
+}
+
+button:hover {
+    background-color: #1a237e;
+}
+
+#name_error,
+#email_error,
+#pass_error {
+    margin-top: 5px;
+    width: 348px;
+    font-size: 18px;
+    color: #c62828;
+    background-color: rgba(255, 0, 0, 0.1);
+    text-align: center;
+    padding: 5px 8px;
+    border: 1px solid #ef9a9a;
+    border-radius: 3px;
+    display: none;
+}
+
+#success {
+    margin-top: 5px;
+    width: 348px;
+    font-size: 18px;
+    color: green;
+    background-color: rgba(0, 255, 0, 0.1);
+    text-align: center;
+    padding: 5px 8px;
+    border: 1px solid #2f912f;
+    border-radius: 3px;
+    display: none;
+}
+
+.log_in {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.tag {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.tag:hover {
+    color: #1a237e;
+}
+
+/* Media Queries */
+
+/* Small devices (landscape phones) */
+@media (max-width: 576px) {
+    .container {
+        width: 90%;
+    }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 577px) and (max-width: 768px) {
+    .container {
+        width: 70%;
+    }
+}
