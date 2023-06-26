@@ -1,4 +1,3 @@
-import "./AddQuestion.css";
 import React, { useState } from "react";
 import Logo from "../../assets/Quora-logo.svg";
 import { useNavigate } from "react-router-dom";

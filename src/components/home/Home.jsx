@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Logo from "../../assets/Quora-logo.svg";
-import "./Home.css";
 import { NavLink } from "react-router-dom";
 import { Search } from "@material-ui/icons";
 import { useNavigate } from "react-router-dom";
@@ -16,11 +15,11 @@ const Home = () => {
   };
 
   const questionHandler = () => {
-    navigate("/questions");
+    navigate("home/questions");
   };
 
   const answerHandler = () => {
-    navigate("/answers");
+    navigate("home/answers");
   };
 
   const logoutHandler = () => {

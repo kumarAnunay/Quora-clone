@@ -3,3 +3,398 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+.mainPage {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    border-radius: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: #F9F5F6;
+    text-align: center;
+    padding: 20px;
+}
+
+.title {
+    padding: 10px 0px;
+    text-align: center;
+    font-size: 35px;
+    font-weight: bold;
+    color: #130f40;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+}
+
+.signup_form {
+    padding: 10px 40px;
+}
+
+label {
+    font-size: 18px;
+    color: #130f40;
+}
+
+input {
+    font-size: 15px;
+    height: 40px;
+    width: 100%;
+    padding: 0 5px;
+    outline-color: rgb(33, 150, 243);
+    border: 1px solid silver;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input::placeholder {
+    opacity: 0.5;
+}
+
+input[type='text'] {
+    margin-bottom: 10px;
+}
+
+button {
+    margin: 30px 0 20px 0;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    color: #fff;
+    background-color: rgb(33, 150, 243);
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all ease 0.4s;
+    box-shadow: 0 3px rgba(0, 0, 0, 0.7);
+}
+
+button:active {
+    transform: translate(0, 2px);
+    box-shadow: 0 2px rgba(0, 0, 0, 0.7);
+}
+
+button:hover {
+    background-color: #1a237e;
+}
+
+#name_error,
+#email_error,
+#pass_error {
+    margin-top: 5px;
+    width: 348px;
+    font-size: 18px;
+    color: #c62828;
+    background-color: rgba(255, 0, 0, 0.1);
+    text-align: center;
+    padding: 5px 8px;
+    border: 1px solid #ef9a9a;
+    border-radius: 3px;
+    display: none;
+}
+
+#success {
+    margin-top: 5px;
+    font-size: 25px;
+    color: green;
+    background-color: rgba(0, 255, 0, 0.1);
+    text-align: center;
+    padding: 5px 8px;
+    border: 1px solid #2f912f;
+    border-radius: 3px;
+    display: none;
+}
+
+.log_in {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.tag {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.tag:hover {
+    color: #1a237e;
+}
+
+.login_form {
+    padding: 20px 40px;
+}
+
+.sign_up {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tag {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.tag:hover {
+    color: #1a237e;
+}
+
+/* Media Queries */
+@media (max-width: 576px) {
+    .container {
+        width: 80%;
+    }
+
+    .signup_form,
+    .login_form {
+        padding: 10px 20px;
+    }
+
+    input[type='text'] {
+        margin-bottom: 5px;
+    }
+
+    button {
+        margin: 20px 0 10px 0;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 768px) {
+    .container {
+        width: 60%;
+    }
+}
+
+.header {
+    padding: 20px;
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    margin-left: 4%;
+    margin-bottom: -20px;
+}
+
+.main {
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin: 0 5%;
+    background-color: rgb(217 217 217);
+}
+
+.header1 {
+    letter-spacing: 1px;
+    font-size: 50px;
+    margin-left: 65px;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 3px black;
+}
+
+.link {
+    text-decoration: none;
+    letter-spacing: 1px;
+    font-size: 30px;
+    color: rgb(255 22 22);
+}
+
+.link:hover {
+    color: rgb(110, 8, 8);
+}
+
+.headerContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px solid grey;
+}
+
+.searchContainer {
+    position: relative;
+}
+
+.searchIcon {
+    position: absolute;
+    right: 10px;
+    top: 23px;
+}
+
+.searchInput {
+    padding: 10px;
+    margin-top: 15px;
+    border: 1px solid green;
+    border-bottom: 3px solid green;
+    border-radius: 5px;
+}
+
+.searchInput:focus {
+    border: 2px solid rgb(255 22 22);
+    outline: none;
+}
+
+.btn {
+    display: flex;
+    gap: 40px;
+    margin-top: -8px;
+}
+
+.bttn {
+    color: white;
+    background-color: rgb(255 22 22);
+}
+
+.bttn:hover {
+    background-color: rgb(110, 8, 8);
+}
+
+.quesAndAnsContainer {
+    padding: 30px;
+    gap: 30px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.list {
+    background-color: white;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 3px solid grey;
+}
+
+.question {
+    margin-bottom: 5px;
+    color: blue;
+    font-size: 18px;
+}
+
+.list p {
+    font-size: 18px;
+}
+
+.answerName {
+    font-weight: bold;
+}
+
+.queContainer {
+    background-color: white;
+    padding: 10px;
+}
+
+.questionList {
+    padding: 10px;
+}
+
+.questionList p {
+    color: blue;
+    font-size: 18px;
+}
+
+.questionBtn {
+    color: white;
+    background-color: rgb(255 22 22);
+}
+
+.questionBtn:hover {
+    background-color: rgb(110, 8, 8);
+}
+
+.questionContainer {
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    min-height: 350px;
+    border: 1px solid gray;
+    margin: 0 5%;
+    background-color: rgb(217 217 217);
+}
+
+.questionInput {
+    width: 90%;
+    height: 50px;
+    margin: 0 5%;
+    margin-top: 50px;
+    border: 1px solid green;
+    border-bottom: 3px solid green;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.questionInput:focus {
+    border: 2px solid rgb(255 22 22);
+    outline: none;
+}
+
+.questionBtnContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 25px;
+    margin: 0 5%;
+}
+
+.answerBtn {
+    color: white;
+    background-color: rgb(255 22 22);
+}
+
+.answerBtn:hover {
+    background-color: rgb(110, 8, 8);
+}
+
+.ansContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 5px;
+    border: 1px solid gray;
+    margin: 0 5%;
+    background-color: rgb(217 217 217);
+    padding: 40px;
+}
+
+.answerContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.answerquestionContainer {
+    background-color: white;
+    padding: 20px;
+}
+
+.answerInput {
+    border: 1px solid green;
+    border-bottom: 3px solid green;
+    border-radius: 5px;
+    resize: none;
+    padding: 20px;
+}
+
+.answerInput::placeholder {
+    font-size: 20px;
+}
+
+.answerInput:focus {
+    border: 2px solid rgb(255 22 22);
+    outline: none;
+}
+
+.answerBtnContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 25px;
+    margin: 0 5%;
+}
+
+.questionAns {
+    color: blue;
+    margin-bottom: 10px;
+}
+
+.ansHeader {
+    margin-bottom: 10px;
+}

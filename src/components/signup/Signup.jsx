@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
-import "./Signup.css";
 
 const Signup = () => {
   const [name, setName] = useState("");
@@ -77,7 +76,7 @@ const Signup = () => {
   }, []);
 
   return (
-    <div className="signup">
+    <div className="mainPage">
       <div className="container">
         <h1 className="title">Sign Up</h1>
         <form className="signup_form" onSubmit={handleSignup}>

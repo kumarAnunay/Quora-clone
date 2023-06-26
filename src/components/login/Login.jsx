@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getItem } from "../../getUser";
-import "./Login.css";
 
 const Login = () => {
   const userRef = useRef(getItem("user"));
@@ -51,7 +50,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login">
+    <div className="mainPage">
       <div className="container">
         <h1 className="title">Log In</h1>
         <form className="login_form" onSubmit={handleLogin}>

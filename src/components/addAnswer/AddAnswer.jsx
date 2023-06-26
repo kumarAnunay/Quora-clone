@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "./AddAnswer.css";
 import { questionLists } from "../../data";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/Quora-logo.svg";
