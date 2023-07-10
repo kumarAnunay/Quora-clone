@@ -1,38 +1,70 @@
-import React, { useState } from "react";
-import Logo from "../../assets/Quora-logo.svg";
+import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { Search } from "@material-ui/icons";
 import { useNavigate } from "react-router-dom";
-import { user } from "../../getUser";
-import { questionAndAnswers, questionLists } from "../../data";
+import { getItem } from "../../getUser";
+import { Avatar } from "@mui/material";
+import { Search } from "@mui/icons-material";
+import { auth } from "../../firebase";
+import Sidebar from "../sidebar/Sidebar";
 
-const Home = () => {
+const Home = ({ ques, queAns }) => {
   const [input, setInput] = useState("");
+  const [queSearch, setQueSearch] = useState(null);
+  const userRef = useRef(getItem("user"));
   const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem("quesList", JSON.stringify(ques));
+  }, [ques]);
+
+  useEffect(() => {
+    localStorage.setItem("queAnsList", JSON.stringify(queAns));
+  }, [queAns]);
 
   const inputHandler = (event) => {
     setInput(event.target.value);
+    setQueSearch(null);
+  };
+
+  const searchHandler = (event) => {
+    if (event.keyCode === 13) {
+      const queAnsFilter = queAns?.filter((item) =>
+        item.question.toLowerCase().includes(input.toLowerCase())
+      );
+      setQueSearch(queAnsFilter);
+    }
   };
 
   const questionHandler = () => {
-    navigate("home/questions");
+    navigate("/add-questions");
   };
 
   const answerHandler = () => {
-    navigate("home/answers");
+    navigate("/add-answers");
   };
 
   const logoutHandler = () => {
-    localStorage.removeItem("user");
-    navigate("/");
+    if (window.confirm("Do you want to Logout?")) {
+      auth
+        .signOut()
+        .then(() => {
+          navigate("/");
+          window.location.reload();
+          localStorage.setItem(
+            "user",
+            JSON.stringify({ ...userRef.current, islogged: false })
+          );
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    //To delete
+    // localStorage.removeItem("user");
   };
 
   return (
     <>
-      <header className="header">
-        <img src={Logo} alt="Quora-Logo" className="logo" />
-      </header>
-      <h1 className="header1">Quora Clone</h1>
       <div className="main">
         <div className="headerContainer">
           <NavLink to="/home" className="link">
@@ -45,7 +77,8 @@ const Home = () => {
               id="search"
               value={input}
               onChange={inputHandler}
-              placeholder="   search for questions..."
+              placeholder="   Search question here..."
+              onKeyDown={searchHandler}
             />
             <Search className="searchIcon" />
           </div>
@@ -62,31 +95,59 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="quesAndAnsContainer">
-          <div className="queAnsContainer">
-            {questionAndAnswers.map((list) => {
-              return (
-                <div className="list" key={list.id}>
-                  <h2 className="questionName">{list.questionedBy}</h2>
-                  <p className="question">{list.question}</p>
-                  <p className="answer">
-                    <span className="answerName">{list.answeredBy} - </span>
-                    {list.answer}
-                  </p>
-                </div>
-              );
-            })}
+        <div className="section">
+          <div className="sidebar">
+            <Sidebar />
           </div>
+          <div className="quesAndAnsContainer">
+            {queSearch ? (
+              <div className="queAnsContainer">
+                {queSearch.length === 0 ? (
+                  <h3 className="noMatch">No results found</h3>
+                ) : (
+                  queSearch.map((list, index) => {
+                    return (
+                      <div className="list" key={index}>
+                        <div className="avatarName">
+                          <Avatar className="avatar" />
+                          <h2 className="answeredBy">{list.answeredBy}</h2>
+                        </div>
+                        <h3 className="homeQuestion">{list.question}</h3>
+                        <p className="answer">- {list.answer}</p>
+                      </div>
+                    );
+                  })
+                )}
+              </div>
+            ) : (
+              <div className="queAnsContainer">
+                {queAns.map((list, index) => {
+                  return (
+                    <div className="list" key={index}>
+                      <div className="avatarName">
+                        <Avatar className="avatar" />
+                        <h2 className="answeredBy">{list.answeredBy}</h2>
+                      </div>
+                      <h3 className="homeQuestion">{list.question}</h3>
+                      <p className="answer">- {list.answer}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
 
-          <div className="queContainer">
-            <h1>Question List</h1>
-            {questionLists.map((list) => {
-              return (
-                <div className="questionList" key={list.id}>
-                  <p>{list.question}</p>
-                </div>
-              );
-            })}
+            <div className="queContainer">
+              <h2 className="questionHeader">Question List</h2>
+              <div className="questionHome">
+                {ques.map((list) => {
+                  return (
+                    <div className="questionList" key={list.id}>
+                      <p>{list.question}</p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </div>
       </div>

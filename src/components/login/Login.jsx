@@ -1,12 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { getItem } from "../../getUser";
+import { TextField } from "@mui/material";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "../../firebase";
+import logo from "../../assets/googleLogo.png";
+import login from "../../assets/login.png";
 
 const Login = () => {
   const userRef = useRef(getItem("user"));
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginDetails, setLoginDetails] = useState({
+    email: "",
+    password: "",
+  });
 
   const emailRef = useRef(null);
   const passwordRef = useRef(null);
@@ -15,8 +22,10 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
-    e.preventDefault();
+  const { email, password } = loginDetails;
+
+  const handleLogin = (event) => {
+    event.preventDefault();
     if (email !== userRef.current?.email) {
       emailRef.current.style.outlineColor = "red";
       emailRef.current.focus();
@@ -36,55 +45,101 @@ const Login = () => {
         JSON.stringify({ ...userRef.current, islogged: true })
       );
       navigate("/home");
+      window.location.reload();
     }
   };
 
-  const handleEmailInput = (e) => {
-    setEmail(e.target.value.toLowerCase());
-    emailErrorRef.current.style.display = "none";
+  const googleLogin = (event) => {
+    event.preventDefault();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log("RESULT", result);
+        const userName = result.user.displayName;
+        const email = result.user.email;
+        localStorage.setItem(
+          "user",
+          JSON.stringify({
+            ...userRef.current,
+            username: userName,
+            email: email,
+            islogged: true,
+          })
+        );
+        navigate("/home");
+      })
+      .catch((error) => {
+        console.log("ERROR", error);
+      });
   };
 
-  const handlePasswordInput = (e) => {
-    setPassword(e.target.value);
+  useEffect(() => {
+    if (!userRef.current?.islogged) {
+      navigate("/");
+    } else {
+      navigate("home");
+    }
+  }, [userRef.current?.islogged]);
+
+  const handleLoginDetails = (event) => {
+    const field = event.target.id;
+    const value = event.target.value;
+
+    setLoginDetails({
+      ...loginDetails,
+      [field]: value,
+    });
+
+    emailErrorRef.current.style.display = "none";
     passwordErrorRef.current.style.display = "none";
   };
 
   return (
     <div className="mainPage">
       <div className="container">
-        <h1 className="title">Log In</h1>
-        <form className="login_form" onSubmit={handleLogin}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            name="email"
+        <div className="logoContainer">
+          <img src={login} alt="login_logo" className="loginLogo" />
+        </div>
+        <form className="login_form">
+          <TextField
             id="email"
-            placeholder="   Enter Email"
-            onChange={handleEmailInput}
+            label="Email"
+            type="email"
+            onChange={handleLoginDetails}
             ref={emailRef}
             value={email}
+            className="textField"
           />
 
           <div id="email_error" ref={emailErrorRef}>
             The email address you entered isn't registered or incorrrect
           </div>
 
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
+          <TextField
             id="password"
-            placeholder="   Enter Password"
-            onChange={handlePasswordInput}
+            label="Password"
+            type="password"
+            onChange={handleLoginDetails}
             ref={passwordRef}
             value={password}
+            className="textField"
           />
 
           <div id="pass_error" ref={passwordErrorRef}>
             Enter valid password
           </div>
-
-          <button type="submit">Login</button>
+          <div className="loginContainer">
+            <button type="submit" className="loginBttn" onClick={handleLogin}>
+              Login
+            </button>
+            <button
+              type="submit"
+              className="loginBttn googleBttn"
+              onClick={googleLogin}
+            >
+              <img src={logo} alt="logo" className="googleLogo" />
+              Signin with Google
+            </button>
+          </div>
         </form>
 
         <div className="sign_up">

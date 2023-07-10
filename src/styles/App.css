@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .mainPage {
@@ -9,7 +10,11 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #fff;
+    /* background-color: #fff; */
+    background-image: url("../assets/background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .container {
@@ -17,76 +22,49 @@
     flex-direction: column;
     width: 35%;
     border-radius: 10px;
+    border: 1px solid gray;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
-    background-color: #F9F5F6;
+    background-color: #f8f5ee;
     text-align: center;
     padding: 20px;
 }
 
-.title {
-    padding: 10px 0px;
-    text-align: center;
-    font-size: 35px;
-    font-weight: bold;
-    color: #130f40;
-    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginLogo {
+    width: 70px;
+    height: 70px;
 }
 
 .signup_form {
     padding: 10px 40px;
 }
 
-label {
-    font-size: 18px;
-    color: #130f40;
-}
-
-input {
-    font-size: 15px;
-    height: 40px;
+.textField {
+    background: white;
     width: 100%;
-    padding: 0 5px;
-    outline-color: rgb(33, 150, 243);
-    border: 1px solid silver;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-input::placeholder {
-    opacity: 0.5;
-}
-
-input[type='text'] {
-    margin-bottom: 10px;
+    margin-top: 15px !important;
 }
 
 button {
-    margin: 30px 0 20px 0;
+    margin: 20px 0 20px 0;
     font-size: 15px;
     font-weight: bold;
     padding: 10px;
-    color: #fff;
-    background-color: rgb(33, 150, 243);
     border: none;
     border-radius: 3px;
     cursor: pointer;
     transition: all ease 0.4s;
-    box-shadow: 0 3px rgba(0, 0, 0, 0.7);
-}
-
-button:active {
-    transform: translate(0, 2px);
-    box-shadow: 0 2px rgba(0, 0, 0, 0.7);
-}
-
-button:hover {
-    background-color: #1a237e;
 }
 
 #name_error,
 #email_error,
 #pass_error {
     margin-top: 5px;
-    width: 348px;
     font-size: 18px;
     color: #c62828;
     background-color: rgba(255, 0, 0, 0.1);
@@ -109,6 +87,12 @@ button:hover {
     display: none;
 }
 
+.loginContainer {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
 .log_in {
     text-align: center;
     margin-bottom: 10px;
@@ -117,10 +101,11 @@ button:hover {
 .tag {
     text-decoration: none;
     font-weight: bold;
+    color: rgb(37, 152, 247);
 }
 
 .tag:hover {
-    color: #1a237e;
+    color: rgb(16, 77, 126);
 }
 
 .login_form {
@@ -132,77 +117,23 @@ button:hover {
     margin-bottom: 20px;
 }
 
-.tag {
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.tag:hover {
-    color: #1a237e;
-}
-
-/* Media Queries */
-@media (max-width: 576px) {
-    .container {
-        width: 80%;
-    }
-
-    .signup_form,
-    .login_form {
-        padding: 10px 20px;
-    }
-
-    input[type='text'] {
-        margin-bottom: 5px;
-    }
-
-    button {
-        margin: 20px 0 10px 0;
-        font-size: 14px;
-    }
-}
-
-@media (min-width: 577px) and (max-width: 768px) {
-    .container {
-        width: 60%;
-    }
-}
-
 .header {
     padding: 20px;
 }
 
-.logo {
-    width: 100px;
-    height: 100px;
-    margin-left: 4%;
-    margin-bottom: -20px;
-}
-
 .main {
-    border-radius: 5px;
     border: 1px solid gray;
-    margin: 0 5%;
-    background-color: rgb(217 217 217);
-}
-
-.header1 {
-    letter-spacing: 1px;
-    font-size: 50px;
-    margin-left: 65px;
-    margin-bottom: 10px;
-    text-shadow: 1px 1px 3px black;
+    min-height: 100vh;
+    background-color: #dee0e1;
 }
 
 .link {
     text-decoration: none;
     letter-spacing: 1px;
-    font-size: 30px;
+    font-size: 35px;
     color: rgb(255 22 22);
-}
-
-.link:hover {
-    color: rgb(110, 8, 8);
+    text-shadow: 1px 1px 2px black;
+    margin-top: -5px;
 }
 
 .headerContainer {
@@ -210,48 +141,89 @@ button:hover {
     justify-content: space-around;
     align-items: center;
     border-bottom: 2px solid grey;
+    padding: 10px;
+    background-color: white;
 }
 
 .searchContainer {
     position: relative;
 }
 
-.searchIcon {
-    position: absolute;
-    right: 10px;
-    top: 23px;
-}
-
 .searchInput {
-    padding: 10px;
-    margin-top: 15px;
+    padding: 15px;
+    height: 45px;
+    width: 100%;
+    font-size: 16px;
     border: 1px solid green;
     border-bottom: 3px solid green;
     border-radius: 5px;
 }
 
+.searchIcon {
+    height: 35px !important;
+    width: 35px !important;
+    padding: 5px;
+    color: #5f5e5e;
+    background-color: #f4f4f4;
+    border-radius: 50%;
+    position: absolute;
+    top: 5px;
+    right: 8px;
+}
+
 .searchInput:focus {
-    border: 2px solid rgb(255 22 22);
+    border: 2px solid #CD1818;
     outline: none;
+}
+
+.noMatch {
+    text-align: center;
+    background-color: white;
+    color: #CD1818;
+    padding: 10px;
+}
+
+.avatarName {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.avatar {
+    color: white !important;
+    background-color: #CD1818 !important;
+    font-size: 10px !important;
+    margin-right: 5px;
+    height: 35px !important;
+    width: 35px !important;
 }
 
 .btn {
     display: flex;
     gap: 40px;
-    margin-top: -8px;
 }
 
 .bttn {
-    color: white;
-    background-color: rgb(255 22 22);
+    border: 1px solid #CD1818;
+    background-color: white;
+    color: #CD1818;
+    box-shadow: none;
+    text-decoration: none;
 }
 
 .bttn:hover {
-    background-color: rgb(110, 8, 8);
+    border: 1px solid white;
+    color: white;
+    background-color: #CD1818;
+}
+
+.bttnActive {
+    background-color: #CD1818;
+    color: white;
 }
 
 .quesAndAnsContainer {
-    padding: 30px;
     gap: 30px;
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -275,17 +247,64 @@ button:hover {
     font-size: 18px;
 }
 
+.navBar {
+    justify-content: space-between;
+    padding-left: 65px;
+    padding-right: 45px;
+}
+
+.googleLogo {
+    height: 20px;
+    width: 20px;
+    margin-right: 5px;
+}
+
+.loginBttn,
+.signupBttn,
+.googleBttn {
+    background-color: white;
+    color: rgb(37, 152, 247);
+    border: 1px solid grey;
+    font-weight: 600;
+}
+
+.googleBttn {
+    display: flex;
+    align-items: center;
+}
+
+.searchQue {
+    padding: 35px;
+}
+
+.loginBttn:hover,
+.signupBttn:hover,
+.googleBttn:hover {
+    background-color: rgb(226, 18, 18);
+    color: white;
+}
+
 .answerName {
     font-weight: bold;
 }
 
 .queContainer {
     background-color: white;
-    padding: 10px;
+}
+
+.questionHeader {
+    margin-bottom: 10px;
+    border-bottom: 2px solid grey;
+    text-align: center;
+    padding: 8px;
 }
 
 .questionList {
-    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.questionHome {
+    padding: 20px;
 }
 
 .questionList p {
@@ -293,38 +312,41 @@ button:hover {
     font-size: 18px;
 }
 
-.questionBtn {
-    color: white;
-    background-color: rgb(255 22 22);
+.questionList p:hover {
+    color: #CD1818;
 }
 
-.questionBtn:hover {
-    background-color: rgb(110, 8, 8);
+.questionAns.active {
+    color: #CD1818;
 }
 
 .questionContainer {
     display: flex;
     flex-direction: column;
-    border-radius: 5px;
-    min-height: 350px;
+    gap: 40px;
+    min-height: 100vh;
     border: 1px solid gray;
-    margin: 0 5%;
     background-color: rgb(217 217 217);
 }
 
 .questionInput {
-    width: 90%;
-    height: 50px;
-    margin: 0 5%;
-    margin-top: 50px;
+    width: 80% !important;
+    height: 60px;
+    font-size: 18px;
+    margin: 0 10%;
+    margin-top: 100px;
     border: 1px solid green;
     border-bottom: 3px solid green;
     border-radius: 5px;
-    padding: 10px;
+    padding: 15px;
+}
+
+.questionInput::placeholder {
+    font-size: 15px;
 }
 
 .questionInput:focus {
-    border: 2px solid rgb(255 22 22);
+    border: 2px solid #CD1818;
     outline: none;
 }
 
@@ -335,30 +357,42 @@ button:hover {
     margin: 0 5%;
 }
 
-.answerBtn {
+.pageBtn {
     color: white;
-    background-color: rgb(255 22 22);
+    background-color: #CD1818;
 }
 
-.answerBtn:hover {
-    background-color: rgb(110, 8, 8);
+.pageBtn {
+    transform: translate(0, 2px);
+    box-shadow: 0 2px rgba(0, 0, 0, 0.7);
 }
 
 .ansContainer {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    border-radius: 5px;
     border: 1px solid gray;
-    margin: 0 5%;
+    min-height: 100vh;
     background-color: rgb(217 217 217);
-    padding: 40px;
+    padding: 50px;
+}
+
+.answeredBy {
+    color: #CD1818;
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.homeQuestion {
+    font-weight: 500 !important;
+    color: blue;
 }
 
 .answerContainer {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 40px;
+    margin-top: 10px;
 }
 
 .answerquestionContainer {
@@ -372,10 +406,11 @@ button:hover {
     border-radius: 5px;
     resize: none;
     padding: 20px;
+    font-size: 18px;
 }
 
 .answerInput::placeholder {
-    font-size: 20px;
+    font-size: 15px;
 }
 
 .answerInput:focus {
@@ -392,9 +427,243 @@ button:hover {
 
 .questionAns {
     color: blue;
+    font-size: 18px;
     margin-bottom: 10px;
+}
+
+.questionAns:hover {
+    color: red;
 }
 
 .ansHeader {
     margin-bottom: 10px;
+    border-bottom: 3px solid gray;
+}
+
+.section {
+    display: flex;
+    gap: 30px;
+    margin: 0 3%;
+    margin-top: 40px;
+}
+
+.sidebar {
+    background-color: white;
+}
+
+.sidebarOptions {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarOption {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.sidebarOption:hover {
+    background: rgb(211, 211, 211);
+}
+
+.sidebarOption>img {
+    height: 30px;
+    width: 40px;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.sidebarOption>.MuiSvgIcon-root {
+    font-size: medium;
+    margin-left: 20px;
+}
+
+.sidebarOption>p {
+    margin-left: 10px;
+    color: gray;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.sidebarOption>.text {
+    margin-left: 23px;
+    color: gray;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+/* Media queries */
+@media (max-width: 576px) {
+    .container {
+        width: 90%;
+        background-color: #faf4f4;
+    }
+
+    .loginLogo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .signup_form,
+    .login_form {
+        padding: 10px 20px;
+    }
+
+    button {
+        margin: 20px 0 10px 0;
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .logo {
+        margin-left: 10px;
+    }
+
+    .header1 {
+        font-size: 30px;
+        margin-left: 20px;
+    }
+
+    .header2 {
+        font-size: 40px !important;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    .headerContainer {
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .searchContainer {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .searchInput {
+        margin-top: 10px;
+    }
+
+    .searchIcon {
+        top: 16px;
+    }
+
+    .quesAndAnsContainer {
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .questionHeader {
+        font-size: 20px;
+    }
+
+    #name_error,
+    #email_error,
+    #pass_error {
+        font-size: 15px;
+    }
+
+    .answerContainer {
+        display: flex;
+        flex-direction: column;
+        margin-top: 0 !important;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 800px) {
+    .container {
+        width: 60%;
+    }
+
+    .header1 {
+        font-size: 40px;
+    }
+
+    .header2 {
+        font-size: 30px !important;
+    }
+
+    .searchInput {
+        margin-top: 10px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    .headerContainer {
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .searchContainer {
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .searchIcon {
+        top: 15px;
+    }
+
+    .questionHeader {
+        font-size: 20px;
+    }
+
+    .answerContainer {
+        display: flex;
+        flex-direction: column;
+        margin-top: 50px !important;
+    }
+
+    .section {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+    }
+
+    .quesAndAnsContainer {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 1050px) {
+    .headerContainer {
+        padding: 10px;
+        flex-direction: column;
+    }
+
+    .searchContainer {
+        width: 100%;
+    }
+
+    .questionInput {
+        width: 70%;
+    }
+
+    .searchIcon {
+        top: 5px;
+    }
+}
+
+@media (min-width: 1051px) {
+
+    .searchInput {
+        min-width: 380px;
+    }
 }

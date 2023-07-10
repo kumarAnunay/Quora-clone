@@ -1,14 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
+import { TextField } from "@mui/material";
+import React, { useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
+import login from "../../assets/login.png";
 
 const Signup = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [signupDetails, setSignupDetails] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
 
-  const nameRef = useRef(null);
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
   const nameErrorRef = useRef(null);
   const passwordErrorRef = useRef(null);
   const emailErrorRef = useRef(null);
@@ -16,23 +17,19 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
+  const { name, email, password } = signupDetails;
+
   const handleSignup = (event) => {
     event.preventDefault();
     const emailPattern = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
     if (name.length < 3) {
-      nameRef.current.style.outlineColor = "red";
-      nameRef.current.focus();
       nameErrorRef.current.style.display = "block";
     }
     if (!email.match(emailPattern)) {
-      emailRef.current.style.outlineColor = "red";
-      emailRef.current.focus();
       emailErrorRef.current.style.display = "block";
     }
     if (password.length < 6) {
-      passwordRef.current.style.outlineColor = "red";
-      passwordRef.current.focus();
       passwordErrorRef.current.style.display = "block";
     }
     if (name.length >= 3 && email.match(emailPattern) && password.length >= 6) {
@@ -46,9 +43,11 @@ const Signup = () => {
       );
 
       successRef.current.style.display = "block";
-      setName("");
-      setPassword("");
-      setEmail("");
+      setSignupDetails({
+        name: "",
+        email: "",
+        password: "",
+      });
 
       setTimeout(() => {
         navigate("/");
@@ -56,80 +55,71 @@ const Signup = () => {
     }
   };
 
-  const handleNameInput = (event) => {
-    setName(event.target.value);
+  const handleSignupDetails = (event) => {
+    const field = event.target.id;
+    const value = event.target.value;
+
+    setSignupDetails({
+      ...signupDetails,
+      [field]: value,
+    });
+
     nameErrorRef.current.style.display = "none";
-  };
-
-  const handleEmailInput = (event) => {
-    setEmail(event.target.value.toLowerCase());
     emailErrorRef.current.style.display = "none";
-  };
-
-  const handlePasswordInput = (event) => {
-    setPassword(event.target.value);
     passwordErrorRef.current.style.display = "none";
   };
-
-  useEffect(() => {
-    nameRef.current.focus();
-  }, []);
 
   return (
     <div className="mainPage">
       <div className="container">
-        <h1 className="title">Sign Up</h1>
+        <div className="logoContainer">
+          <img src={login} alt="login_logo" className="loginLogo" />
+        </div>
         <form className="signup_form" onSubmit={handleSignup}>
           <div id="success" ref={successRef}>
             Account successfully Registered!
           </div>
-
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            name="name"
+          <TextField
             id="name"
-            placeholder="   Name"
-            onChange={handleNameInput}
-            ref={nameRef}
+            label="Name"
+            type="text"
+            onChange={handleSignupDetails}
             value={name}
+            className="textField"
           />
 
           <div id="name_error" ref={nameErrorRef}>
             Enter your valid name
           </div>
-
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            name="email"
+          <TextField
             id="email"
-            placeholder="   Email"
-            onChange={handleEmailInput}
-            ref={emailRef}
+            label="Email"
+            type="email"
+            onChange={handleSignupDetails}
             value={email}
+            className="textField"
           />
 
           <div id="email_error" ref={emailErrorRef}>
             Enter valid email address
           </div>
 
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
+          <TextField
             id="password"
-            placeholder="   Password"
-            onChange={handlePasswordInput}
-            ref={passwordRef}
+            label="Password"
+            type="password"
+            onChange={handleSignupDetails}
             value={password}
+            className="textField"
           />
 
           <div id="pass_error" ref={passwordErrorRef}>
             Password must contain atleast 6 characters
           </div>
 
-          <button type="submit">Create account</button>
+          <button type="submit" className="signupBttn">
+            Create account
+          </button>
         </form>
 
         <div className="log_in">

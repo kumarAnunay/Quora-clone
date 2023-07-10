@@ -1,35 +1,90 @@
-import React, { useState } from "react";
-import { questionLists } from "../../data";
+import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../assets/Quora-logo.svg";
+import { getItem } from "../../getUser";
+import NavBar from "../navBar/NavBar";
 
-const AddAnswer = () => {
+const AddAnswer = ({ ques, queAns, setQueAns }) => {
   const [answerInput, setAnswerInput] = useState("");
+  const [selectedQue, setSelectedQue] = useState({
+    question: "",
+    questionedBy: "",
+  });
+  const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null);
+  const userRef = useRef(getItem("user"));
+  const inputRef = useRef("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!userRef.current?.islogged) {
+      navigate("/");
+    }
+  }, [userRef.current?.islogged]);
 
   const inputHandler = (event) => {
     setAnswerInput(event.target.value);
   };
 
   const cancelPage = () => {
-    navigate(-1);
+    navigate("/home");
   };
 
-  const addAnswerInputHandler = () => {};
+  const handleQueAns = (question, questionedBy, index) => {
+    setSelectedQue({
+      question,
+      questionedBy,
+    });
+    setSelectedQuestionIndex(index);
+    inputRef.current.focus();
+  };
+
+  const addAnswerInputHandler = () => {
+    if (selectedQue.questionedBy && answerInput !== "") {
+      setQueAns([
+        ...queAns,
+        {
+          id: (queAns.length + 1).toString(),
+          answeredBy: userRef.current?.username,
+          questionedBy: selectedQue.questionedBy,
+          question: selectedQue.question,
+          answer: answerInput,
+        },
+      ]);
+      setAnswerInput("");
+      alert("Answer added");
+      setSelectedQuestionIndex(null);
+    } else {
+      alert(
+        "Please select a question from the questions list and write your answer."
+      );
+    }
+  };
 
   return (
     <>
-      <header className="header">
-        <img src={Logo} alt="Quora-Logo" className="logo" />
-      </header>
-      <h1 className="header1">Quora Clone</h1>
+      <NavBar />
       <div className="ansContainer">
         <div className="answerContainer">
           <div className="answerquestionContainer">
-            <h2 className="ansHeader">Questions</h2>
+            <h2 className="ansHeader">Select Question</h2>
             <div>
-              {questionLists.map((question) => {
-                return <h3 className="questionAns">{question.question}</h3>;
+              {ques.map((question, index) => {
+                return (
+                  <p
+                    key={index}
+                    className={`questionAns ${
+                      selectedQuestionIndex === index ? "active" : ""
+                    }`}
+                    onClick={() =>
+                      handleQueAns(
+                        question.question,
+                        question.questionedBy,
+                        index
+                      )
+                    }
+                  >
+                    {question.question}
+                  </p>
+                );
               })}
             </div>
           </div>
@@ -40,14 +95,15 @@ const AddAnswer = () => {
             placeholder="   Type your Answer here ..."
             onChange={inputHandler}
             className="answerInput"
+            ref={inputRef}
           ></textarea>
         </div>
 
         <div className="answerBtnContainer">
-          <button className="answerBtn" onClick={cancelPage}>
+          <button className="pageBtn" onClick={cancelPage}>
             Cancel
           </button>
-          <button className="answerBtn" onClick={addAnswerInputHandler}>
+          <button className="pageBtn" onClick={addAnswerInputHandler}>
             Add Answer
           </button>
         </div>

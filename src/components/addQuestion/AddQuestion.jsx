@@ -1,30 +1,47 @@
-import React, { useState } from "react";
-import Logo from "../../assets/Quora-logo.svg";
+import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { questionLists } from "../../data";
+import { getItem } from "../../getUser";
+import NavBar from "../navBar/NavBar";
 
-const AddQuestion = () => {
+const AddQuestion = ({ ques, setQues }) => {
   const [questionInput, setQuestionInput] = useState("");
+  const userRef = useRef(getItem("user"));
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!userRef.current?.islogged) {
+      navigate("/");
+    }
+  }, [userRef.current?.islogged]);
 
   const inputHandler = (event) => {
     setQuestionInput(event.target.value);
   };
 
   const cancelPage = () => {
-    navigate(-1);
+    navigate("/home");
   };
 
   const addToQuestionHAndler = () => {
-    setQuestionInput("");
+    if (questionInput !== "" && questionInput.length > 10) {
+      setQues([
+        ...ques,
+        {
+          id: (ques.length + 1).toString(),
+          questionedBy: userRef.current?.username,
+          question: questionInput,
+        },
+      ]);
+      setQuestionInput("");
+      alert("Question added");
+    } else {
+      alert("Write your question in Input Box and a valid question");
+    }
   };
 
   return (
     <>
-      <header className="header">
-        <img src={Logo} alt="Quora-Logo" className="logo" />
-      </header>
-      <h1 className="header1">Quora Clone</h1>
+      <NavBar />
       <div className="questionContainer">
         <input
           type="text"
@@ -35,10 +52,10 @@ const AddQuestion = () => {
           className="questionInput"
         />
         <div className="questionBtnContainer">
-          <button className="questionBtn" onClick={cancelPage}>
+          <button className="pageBtn" onClick={cancelPage}>
             Cancel
           </button>
-          <button className="questionBtn" onClick={addToQuestionHAndler}>
+          <button className="pageBtn" onClick={addToQuestionHAndler}>
             Add question
           </button>
         </div>
