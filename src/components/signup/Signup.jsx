@@ -1,5 +1,5 @@
 import { TextField } from "@mui/material";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import login from "../../assets/login.png";
 
@@ -9,6 +9,8 @@ const Signup = () => {
     email: "",
     password: "",
   });
+
+  const [registered, setRegistered] = useState(false);
 
   const nameErrorRef = useRef(null);
   const passwordErrorRef = useRef(null);
@@ -49,11 +51,17 @@ const Signup = () => {
         password: "",
       });
 
+      setRegistered(true);
+    }
+  };
+
+  useEffect(() => {
+    if (registered) {
       setTimeout(() => {
         navigate("/");
       }, 1000);
     }
-  };
+  }, [registered]);
 
   const handleSignupDetails = (event) => {
     const field = event.target.id;
