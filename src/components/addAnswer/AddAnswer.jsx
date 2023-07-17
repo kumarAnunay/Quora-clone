@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getItem } from "../../getUser";
 import NavBar from "../navBar/NavBar";
+import Footer from "../footer/Footer";
 
 const AddAnswer = ({ ques, queAns, setQueAns }) => {
   const [answerInput, setAnswerInput] = useState("");
@@ -108,6 +109,7 @@ const AddAnswer = ({ ques, queAns, setQueAns }) => {
           </button>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

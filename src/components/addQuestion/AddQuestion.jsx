@@ -2,6 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getItem } from "../../getUser";
 import NavBar from "../navBar/NavBar";
+import Footer from "../footer/Footer";
 
 const AddQuestion = ({ ques, setQues }) => {
   const [questionInput, setQuestionInput] = useState("");
@@ -60,6 +61,7 @@ const AddQuestion = ({ ques, setQues }) => {
           </button>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

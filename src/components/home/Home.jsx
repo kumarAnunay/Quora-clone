@@ -6,6 +6,7 @@ import { Avatar } from "@mui/material";
 import { Search } from "@mui/icons-material";
 import { auth } from "../../firebase";
 import Sidebar from "../sidebar/Sidebar";
+import Footer from "../footer/Footer";
 
 const Home = ({ ques, queAns }) => {
   const [input, setInput] = useState("");
@@ -151,6 +152,7 @@ const Home = ({ ques, queAns }) => {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 };

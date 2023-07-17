@@ -317,7 +317,7 @@ button {
 }
 
 .questionList p:hover {
-    color: #CD1818;
+    color: red;
 }
 
 .questionAns.active {
@@ -453,6 +453,7 @@ button {
     gap: 30px;
     margin: 0 3%;
     margin-top: 40px;
+    margin-bottom: 30px;
 }
 
 .sidebar {
@@ -506,6 +507,19 @@ button {
 
 .list {
     border-radius: 8px;
+}
+
+.footer {
+    height: 40px;
+    background-color: #3AA6B9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.copyright {
+    color: white;
+    text-shadow: 1px 1px 2px #CD1818;
 }
 
 /* Media queries */
@@ -594,6 +608,10 @@ button {
         display: flex;
         flex-direction: column;
         margin-top: 0 !important;
+    }
+
+    .copyright {
+        font-size: 14px;
     }
 }
 
