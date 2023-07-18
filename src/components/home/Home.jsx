@@ -64,6 +64,17 @@ const Home = ({ ques, queAns }) => {
     // localStorage.removeItem("user");
   };
 
+  const scrollToQuestion = (question) => {
+    const queAnsIndex = queAns.findIndex((item) => item.question === question);
+    if (queAnsIndex !== -1) {
+      const listDivs = document.querySelectorAll(".list");
+      const targetDiv = listDivs[queAnsIndex];
+      if (targetDiv) {
+        targetDiv.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <>
       <div className="main">
@@ -142,9 +153,13 @@ const Home = ({ ques, queAns }) => {
               <div className="questionHome">
                 {ques.map((list) => {
                   return (
-                    <div className="questionList" key={list.id}>
-                      <p>{list.question}</p>
-                    </div>
+                    <p
+                      className="questionList"
+                      key={list.id}
+                      onClick={() => scrollToQuestion(list.question)}
+                    >
+                      {list.question}
+                    </p>
                   );
                 })}
               </div>

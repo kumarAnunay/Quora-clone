@@ -305,6 +305,7 @@ button {
 
 .questionList {
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
 .questionHome {
@@ -433,13 +434,14 @@ button {
     margin: 0 5%;
 }
 
-.questionAns {
+.questionList {
     color: blue;
     font-size: 18px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 
-.questionAns:hover {
+.questionList:hover {
     color: red;
 }
 
@@ -471,7 +473,6 @@ button {
     display: flex;
     align-items: center;
     padding: 15px;
-    cursor: pointer;
     margin-top: 10px;
 }
 

@@ -48,22 +48,22 @@ export const questionLists = [
   {
     id: "1",
     questionedBy: "Kamal rastogi",
-    question: "What is the famous food of Agra?",
+    question: "Which is the tallest mountain in the world?",
   },
   {
     id: "2",
     questionedBy: "Rahul Kumar",
-    question: "What color is the sky?",
+    question: "Rainbow consist of how many colours?",
   },
   {
     id: "3",
     questionedBy: "Jatin Rawat",
-    question: "When did the world war start?",
+    question: "Which is the largest plateau in the world?",
   },
   {
     id: "4",
     questionedBy: "Jatin Rawat",
-    question: 'Which animal is known as the "Ship of the Desert"?',
+    question: "Who designed the National Flag of India?",
   },
   {
     id: "5",
@@ -78,7 +78,7 @@ export const questionLists = [
   {
     id: "7",
     questionedBy: "Amartya",
-    question: "Rainbow consist of how many colours?",
+    question: "What color is the sky?",
   },
   {
     id: "8",
@@ -94,7 +94,7 @@ export const questionLists = [
   {
     id: "10",
     questionedBy: "Astha",
-    question: "Who designed the National Flag of India?",
+    question: 'Which animal is known as the "Ship of the Desert"?',
   },
   {
     id: "11",
@@ -104,11 +104,11 @@ export const questionLists = [
   {
     id: "12",
     questionedBy: "Amartya",
-    question: "Which is the largest plateau in the world?",
+    question: "When did the world war start?",
   },
   {
     id: "13",
     questionedBy: "Aman Sen",
-    question: "Which is the tallest mountain in the world?",
+    question: "What is the famous food of Agra?",
   },
 ];
