@@ -239,7 +239,8 @@ button {
     margin-bottom: 10px;
 }
 
-.question {
+.question,
+.questionAns {
     margin-bottom: 5px;
     color: blue;
     font-size: 18px;
