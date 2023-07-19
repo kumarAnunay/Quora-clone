@@ -1,11 +1,12 @@
 import React, { useRef, useState, useEffect } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getItem } from "../../getUser";
 import { TextField } from "@mui/material";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../firebase";
 import logo from "../../assets/googleLogo.png";
-import login from "../../assets/login.png";
+import quora from "../../assets/Quora-Logo.png";
+import emailLogo from "../../assets/Email-logo.png";
 
 const Login = () => {
   const userRef = useRef(getItem("user"));
@@ -47,6 +48,10 @@ const Login = () => {
       navigate("/home");
       window.location.reload();
     }
+  };
+
+  const signupPage = () => {
+    navigate("/signup");
   };
 
   const googleLogin = (event) => {
@@ -95,58 +100,101 @@ const Login = () => {
 
   return (
     <div className="mainPage">
-      <div className="container">
-        <div className="logoContainer">
-          <img src={login} alt="login_logo" className="loginLogo" />
+      <div className="loginPage">
+        <div className="loginPageHeader">
+          <img src={quora} alt="Quora" className="quora" />
         </div>
-        <form className="login_form">
-          <TextField
-            id="email"
-            label="Email"
-            type="email"
-            onChange={handleLoginDetails}
-            ref={emailRef}
-            value={email}
-            className="textField"
-          />
+        <h4 className="text">
+          A place to share knowledge and better understand the world
+        </h4>
+        <div className="loginContent">
+          <div className="leftSide">
+            <div className="termsAndConditions">
+              By continuing you indicate that you agree to Quora's{" "}
+              <span className="condition">Terms of Service</span> and{" "}
+              <span className="condition">Privacy Policy</span>.
+            </div>
 
-          <div id="email_error" ref={emailErrorRef}>
-            The email address you entered isn't registered or incorrrect
+            <div className="leftSideBtn">
+              <button
+                type="submit"
+                className="loginBttn googleBttn"
+                onClick={googleLogin}
+              >
+                <img src={logo} alt="logo" className="googleLogo" />
+                Continue with Google
+              </button>
+              <button type="submit" className="signupBtn" onClick={signupPage}>
+                <img src={emailLogo} alt="logo" className="emailLogo" />
+                Sign up with Email
+              </button>
+            </div>
           </div>
+          <div className="rightSide">
+            <div className="logoContainer">
+              <p className="rightSideLogin">Login</p>
+            </div>
+            <form className="login_form">
+              <TextField
+                id="email"
+                label="Email"
+                type="email"
+                onChange={handleLoginDetails}
+                ref={emailRef}
+                value={email}
+                className="textField"
+              />
 
-          <TextField
-            id="password"
-            label="Password"
-            type="password"
-            onChange={handleLoginDetails}
-            ref={passwordRef}
-            value={password}
-            className="textField"
-          />
+              <div id="email_error" ref={emailErrorRef}>
+                The email address you entered isn't registered or incorrrect
+              </div>
 
-          <div id="pass_error" ref={passwordErrorRef}>
-            Enter valid password
+              <TextField
+                id="password"
+                label="Password"
+                type="password"
+                onChange={handleLoginDetails}
+                ref={passwordRef}
+                value={password}
+                className="textField"
+              />
+
+              <div id="pass_error" ref={passwordErrorRef}>
+                Enter valid password
+              </div>
+              <div className="loginContainer">
+                <p className="forgotPassword">Forgot Password?</p>
+                <button
+                  type="submit"
+                  className="loginBttn"
+                  onClick={handleLogin}
+                >
+                  Login
+                </button>
+              </div>
+            </form>
           </div>
-          <div className="loginContainer">
-            <button type="submit" className="loginBttn" onClick={handleLogin}>
-              Login
-            </button>
-            <button
-              type="submit"
-              className="loginBttn googleBttn"
-              onClick={googleLogin}
-            >
-              <img src={logo} alt="logo" className="googleLogo" />
-              Signin with Google
-            </button>
-          </div>
-        </form>
-
-        <div className="sign_up">
-          Register here{" "}
-          <NavLink to="/signup" className="tag">
-            Sign Up
-          </NavLink>
+        </div>
+        <div className="language">
+          <span className="languageColor">हिन्दी &gt;</span>{" "}
+          <span className="languageColor">मराठी &gt;</span>
+        </div>
+        <div className="loginFooter">
+          <span className="footerLogin">About</span>
+          <span>&#8901;</span>
+          <span className="footerLogin">Careers</span>
+          <span>&#8901;</span>
+          <span className="footerLogin">Privacy</span>
+          <span>&#8901;</span>
+          <span className="footerLogin">Terms</span>
+          <span>&#8901;</span>
+          <span className="footerLogin">Contact</span>
+          <span>&#8901;</span>
+          <span className="footerLogin">Languages</span>
+          <span>&#8901;</span>
+          <span className="footerLogin">Your Ad Choices</span>
+          <span>&#8901;</span>
+          <span className="footerLogin">&copy; Quora-Clone</span>
         </div>
       </div>
     </div>
