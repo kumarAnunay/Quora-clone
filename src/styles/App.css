@@ -451,7 +451,7 @@ button {
     gap: 40px;
     min-height: 100vh;
     border: 1px solid gray;
-    background-color: rgb(217 217 217);
+    background-color: #f1f2f2;
 }
 
 .questionInput {
@@ -499,7 +499,7 @@ button {
     gap: 20px;
     border: 1px solid gray;
     min-height: 100vh;
-    background-color: rgb(217 217 217);
+    background-color: #f1f2f2;
     padding: 50px;
 }
 
