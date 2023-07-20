@@ -56,7 +56,6 @@
     justify-content: center;
     align-items: center;
     margin-bottom: -30px;
-    margin-top: -5px;
 }
 
 .quora {
@@ -148,7 +147,7 @@ button {
 .termsAndConditions {
     text-align: justify;
     color: grey;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 14px;
 }
 
@@ -199,7 +198,7 @@ button {
     text-decoration: none;
     letter-spacing: 1px;
     font-size: 35px;
-    color: rgb(255 22 22);
+    color: rgb(244, 22, 22);
     text-shadow: 1px 1px 2px black;
 }
 
@@ -208,7 +207,7 @@ button {
     justify-content: space-around;
     align-items: center;
     border-bottom: 2px solid grey;
-    padding: 10px;
+    padding: 5px;
     background-color: #3AA6B9;
 }
 
@@ -273,21 +272,21 @@ button {
 }
 
 .bttn {
-    border: 1px solid #CD1818;
+    border: 1px solid #b92b27;
     background-color: white;
-    color: #CD1818;
+    color: #b92b27;
     box-shadow: none;
     text-decoration: none;
 }
 
 .bttn:hover {
-    border: 1px solid #c62828;
+    border: 1px solid #b92b27;
     color: white;
-    background-color: #CD1818;
+    background-color: #b92b27;
 }
 
 .bttnActive {
-    background-color: #CD1818;
+    background-color: #b92b27;
     color: white;
 }
 
@@ -442,7 +441,7 @@ button {
 }
 
 .questionAns.active {
-    color: #CD1818;
+    color: red;
 }
 
 .questionContainer {
@@ -647,7 +646,6 @@ button {
 @media (max-width: 576px) {
     .container {
         width: 90%;
-        background-color: #faf4f4;
     }
 
     .loginLogo {
