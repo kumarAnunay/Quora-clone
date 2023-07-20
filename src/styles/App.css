@@ -191,9 +191,8 @@ button {
 }
 
 .main {
-    border: 1px solid gray;
     min-height: 100vh;
-    background-color: #dee0e1;
+    background-color: #f1f2f2;
 }
 
 .link {
@@ -386,7 +385,7 @@ button {
     align-items: center;
     padding: 15px;
     gap: 10px;
-    background-color: rgb(241, 233, 233);
+    background-color: #f1f2f2;
 }
 
 .footerLogin {
@@ -403,7 +402,7 @@ button {
 .signupBttn:hover,
 .googleBttn:hover,
 .signupBtn:hover {
-    background-color: rgb(241, 233, 233);
+    background-color: #f1f2f2;
     border: 1px solid black;
 }
 
@@ -576,7 +575,7 @@ button {
     gap: 30px;
     margin: 0 3%;
     margin-top: 40px;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 .sidebar {
@@ -738,6 +737,7 @@ button {
 
     .text {
         font-size: 14px;
+        margin: 0 10px;
     }
 
     .loginPageHeader {
@@ -751,6 +751,7 @@ button {
 
     .loginPage {
         width: 90%;
+        margin: 5% 0;
     }
 
     .loginContent {
@@ -765,6 +766,7 @@ button {
         margin: auto;
         border: none;
         width: 80%;
+        margin-bottom: 30px;
     }
 
     .signupBtn,
