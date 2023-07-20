@@ -193,21 +193,24 @@ button {
     background-color: #f1f2f2;
 }
 
-.link {
-    text-decoration: none;
-    letter-spacing: 1px;
-    font-size: 35px;
-    color: rgb(244, 22, 22);
-    text-shadow: 1px 1px 2px black;
+.header2 {
+    width: 150px;
+    height: 100px;
+    cursor: pointer;
 }
 
 .headerContainer {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    border-bottom: 2px solid grey;
+    border-bottom: 1px solid grey;
     padding: 5px;
-    background-color: #3AA6B9;
+    background-color: #ffffff;
+    height: 70px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    top: 0;
 }
 
 .searchContainer {
@@ -451,6 +454,7 @@ button {
     min-height: 100vh;
     border: 1px solid gray;
     background-color: #f1f2f2;
+    margin-top: 70px;
 }
 
 .questionInput {
@@ -500,6 +504,7 @@ button {
     min-height: 100vh;
     background-color: #f1f2f2;
     padding: 50px;
+    margin-top: 70px;
 }
 
 .answeredBy {
@@ -573,14 +578,9 @@ button {
     display: flex;
     gap: 30px;
     margin: 0 3%;
-    margin-top: 40px;
+    margin-top: 70px;
     padding-bottom: 30px;
-}
-
-.sidebar {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+    padding-top: 30px;
 }
 
 .sidebarOptions {
@@ -591,12 +591,12 @@ button {
 .sidebarOption {
     display: flex;
     align-items: center;
-    padding: 15px;
+    padding: 5px;
     margin-top: 10px;
 }
 
 .sidebarOption:hover {
-    background: rgb(211, 211, 211);
+    background: #d8d8d8;
 }
 
 .sidebarOption>img {
@@ -648,6 +648,11 @@ button {
         width: 90%;
     }
 
+    .header2 {
+        width: 100px;
+        margin-bottom: -30px;
+    }
+
     .loginLogo {
         width: 50px;
         height: 50px;
@@ -673,10 +678,6 @@ button {
         margin-left: 20px;
     }
 
-    .header2 {
-        font-size: 30px !important;
-    }
-
     h2 {
         font-size: 18px;
     }
@@ -688,6 +689,11 @@ button {
     .headerContainer {
         padding: 10px;
         flex-direction: column;
+        height: fit-content;
+    }
+
+    .section {
+        margin-top: 220px;
     }
 
     .sidebar {
@@ -697,6 +703,14 @@ button {
     .searchContainer {
         margin-bottom: 10px;
         width: 100%;
+    }
+
+    .ansContainer {
+        margin-top: 140px;
+    }
+
+    .questionContainer {
+        margin-top: 120px;
     }
 
     .searchInput {
@@ -790,12 +804,13 @@ button {
         width: 60%;
     }
 
-    .header1 {
-        font-size: 40px;
+    .header2 {
+        width: 100px;
+        margin-bottom: -10px;
     }
 
-    .header2 {
-        font-size: 30px !important;
+    .header1 {
+        font-size: 40px;
     }
 
     .searchInput {
@@ -813,6 +828,7 @@ button {
     .headerContainer {
         padding: 10px;
         flex-direction: column;
+        height: fit-content;
     }
 
     .searchContainer {
@@ -832,6 +848,14 @@ button {
         display: flex;
         flex-direction: column;
         margin-top: 50px !important;
+    }
+
+    .ansContainer {
+        margin-top: 140px;
+    }
+
+    .questionContainer {
+        margin-top: 120px;
     }
 
     .section {
@@ -879,6 +903,23 @@ button {
     .headerContainer {
         padding: 10px;
         flex-direction: column;
+        height: fit-content;
+    }
+
+    .header2 {
+        margin-bottom: -20px;
+    }
+
+    .ansContainer {
+        margin-top: 160px;
+    }
+
+    .questionContainer {
+        margin-top: 140px;
+    }
+
+    .section {
+        margin-top: 230px;
     }
 
     .searchContainer {

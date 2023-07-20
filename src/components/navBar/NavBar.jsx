@@ -1,8 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useRef, useEffect, useState } from "react";
 import { getItem } from "../../getUser";
 import { auth } from "../../firebase";
+import logo from "../../assets/Quora-Logo.png";
 
 const NavBar = () => {
   const userRef = useRef(getItem("user"));
@@ -45,12 +46,14 @@ const NavBar = () => {
     }
   };
 
+  const homePage = () => {
+    navigate("/home");
+  };
+
   return (
     <div className="headerContainer navBar">
       <div>
-        <Link to="/home" className="link">
-          <h2 className="header2">Quora</h2>
-        </Link>
+        <img src={logo} alt="Quora" className="header2" onClick={homePage} />
       </div>
       <div className="btn">
         <button

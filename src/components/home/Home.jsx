@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { getItem } from "../../getUser";
 import { Avatar } from "@mui/material";
@@ -7,6 +6,7 @@ import { Search } from "@mui/icons-material";
 import { auth } from "../../firebase";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
+import logo from "../../assets/Quora-Logo.png";
 
 const Home = ({ ques, queAns }) => {
   const [input, setInput] = useState("");
@@ -75,13 +75,22 @@ const Home = ({ ques, queAns }) => {
     }
   };
 
+  const homePage = () => {
+    navigate("/home");
+  };
+
   return (
     <>
       <div className="main">
         <div className="headerContainer">
-          <NavLink to="/home" className="link">
-            <h2 className="header2">Quora</h2>
-          </NavLink>
+          <div>
+            <img
+              src={logo}
+              alt="Quora"
+              className="header2"
+              onClick={homePage}
+            />
+          </div>
           <div className="searchContainer">
             <input
               type="text"

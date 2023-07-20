@@ -4,6 +4,11 @@ const Sidebar = () => {
   return (
     <div className="sidebarOptions">
       <div className="sidebarOption">
+        <Add />
+        <p>Create Space</p>
+      </div>
+
+      <div className="sidebarOption">
         <img
           src="https://media.istockphoto.com/id/1092170968/vector/open-book-with-history-doodles-and-lettering.jpg?s=612x612&w=0&k=20&c=SvXn0O25eHC8ARjwlcn83kahxjMGl2ti_DDFGozBKqg="
           alt=""
@@ -81,10 +86,6 @@ const Sidebar = () => {
           alt=""
         />
         <p>Education</p>
-      </div>
-      <div className="sidebarOption">
-        <Add />
-        <p className="text">Discover Spaces</p>
       </div>
     </div>
   );
