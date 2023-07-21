@@ -408,6 +408,7 @@ button {
 }
 
 .queContainer {
+    height: fit-content;
     background-color: white;
     border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
@@ -534,6 +535,7 @@ button {
 }
 
 .homeQuestion {
+    padding: 10px;
     font-weight: 500 !important;
     color: blue;
 }
@@ -602,6 +604,10 @@ button {
     padding-top: 30px;
 }
 
+.sidebar {
+    height: fit-content;
+}
+
 .sidebarOptions {
     display: flex;
     flex-direction: column;
@@ -642,10 +648,6 @@ button {
     color: gray;
     font-weight: 400;
     font-size: 13px;
-}
-
-.list {
-    border-radius: 8px;
 }
 
 .voteIcon {
