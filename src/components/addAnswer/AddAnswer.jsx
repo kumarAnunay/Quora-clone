@@ -43,11 +43,13 @@ const AddAnswer = ({ ques, queAns, setQueAns }) => {
       setQueAns([
         ...queAns,
         {
-          id: (queAns.length + 1).toString(),
+          id: queAns.length + 1,
           answeredBy: userRef.current?.username,
           questionedBy: selectedQue.questionedBy,
           question: selectedQue.question,
           answer: answerInput,
+          upvote: false,
+          downvote: false,
         },
       ]);
       setAnswerInput("");

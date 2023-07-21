@@ -1,14 +1,13 @@
-import { useState } from 'react'
+import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Signup from './components/signup/Signup';
-import Login from './components/login/Login';
-import Home from './components/home/Home';
-import AddQuestion from './components/addQuestion/AddQuestion';
-import AddAnswer from './components/addAnswer/AddAnswer';
-import { questionAndAnswers, questionLists } from './data';
-import { quesList, queAnsList } from './getUser';
-import './styles/App.css';
-
+import Signup from "./components/signup/Signup";
+import Login from "./components/login/Login";
+import Home from "./components/home/Home";
+import AddQuestion from "./components/addQuestion/AddQuestion";
+import AddAnswer from "./components/addAnswer/AddAnswer";
+import { questionAndAnswers, questionLists } from "./data";
+import { quesList, queAnsList } from "./getUser";
+import "./styles/App.css";
 
 const App = () => {
   const [queAns, setQueAns] = useState(queAnsList || questionAndAnswers);
@@ -17,15 +16,15 @@ const App = () => {
   const router = createBrowserRouter([
     {
       path: `/`,
-      element: <Login />
+      element: <Login />,
     },
     {
       path: `/signup`,
-      element: <Signup />
+      element: <Signup />,
     },
     {
       path: `/home`,
-      element: <Home queAns={queAns} ques={ques} />
+      element: <Home queAns={queAns} ques={ques} setQueAns={setQueAns} />,
     },
     {
       path: `/add-questions`,
@@ -33,16 +32,15 @@ const App = () => {
     },
     {
       path: `/add-answers`,
-      element: <AddAnswer ques={ques} queAns={queAns} setQueAns={setQueAns} />
+      element: <AddAnswer ques={ques} queAns={queAns} setQueAns={setQueAns} />,
     },
   ]);
-
 
   return (
     <div className="app">
       <RouterProvider router={router} />
     </div>
-  )
-}
+  );
+};
 
 export default App;

@@ -207,10 +207,6 @@ button {
     padding: 5px;
     background-color: #ffffff;
     height: 70px;
-    position: fixed;
-    width: 100%;
-    z-index: 1;
-    top: 0;
 }
 
 .searchContainer {
@@ -262,7 +258,6 @@ button {
 .avatar {
     color: white !important;
     background-color: #CD1818 !important;
-    font-size: 10px !important;
     margin-right: 5px;
     height: 35px !important;
     width: 35px !important;
@@ -270,7 +265,7 @@ button {
 
 .btn {
     display: flex;
-    gap: 40px;
+    gap: 30px;
 }
 
 .bttn {
@@ -447,6 +442,33 @@ button {
     color: red;
 }
 
+.headerIcons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    padding: 5px;
+}
+
+.icon1 {
+    border-bottom: 2px solid #CD1818;
+}
+
+.iconsHeader {
+    color: #6d6e6e;
+    font-size: 25px !important;
+}
+
+.icon:hover {
+    background-color: #f4f4f4;
+}
+
+.activeIcon {
+    color: #c62828 !important;
+
+}
+
 .questionContainer {
     display: flex;
     flex-direction: column;
@@ -454,7 +476,6 @@ button {
     min-height: 100vh;
     border: 1px solid gray;
     background-color: #f1f2f2;
-    margin-top: 70px;
 }
 
 .questionInput {
@@ -504,7 +525,6 @@ button {
     min-height: 100vh;
     background-color: #f1f2f2;
     padding: 50px;
-    margin-top: 70px;
 }
 
 .answeredBy {
@@ -578,7 +598,6 @@ button {
     display: flex;
     gap: 30px;
     margin: 0 3%;
-    margin-top: 70px;
     padding-bottom: 30px;
     padding-top: 30px;
 }
@@ -600,8 +619,8 @@ button {
 }
 
 .sidebarOption>img {
-    height: 30px;
-    width: 40px;
+    height: 20px;
+    width: 30px;
     border-radius: 5px;
     margin-left: 20px;
 }
@@ -629,17 +648,39 @@ button {
     border-radius: 8px;
 }
 
+.voteIcon {
+    color: #656565;
+    height: 20px !important;
+    width: 20px !important;
+}
+
+.vote {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.voteAlign {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2px;
+}
+
 .footer {
     height: 40px;
-    background-color: #3AA6B9;
+    background-color: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .copyright {
-    color: white;
-    text-shadow: 1px 1px 2px #CD1818;
+    color: #c62828
+}
+
+.logoutBttn {
+    all: unset;
 }
 
 /* Media queries */
@@ -650,7 +691,13 @@ button {
 
     .header2 {
         width: 100px;
-        margin-bottom: -30px;
+        margin-bottom: -20px;
+    }
+
+    .headerIcons {
+        width: 100%;
+        justify-content: space-between;
+        padding: 5px;
     }
 
     .loginLogo {
@@ -658,14 +705,24 @@ button {
         height: 50px;
     }
 
+    .logout {
+        height: 25px !important;
+        width: 25px !important;
+        margin-bottom: 0;
+    }
+
     .signup_form,
     .login_form {
         padding: 10px 20px;
     }
 
+    .btn {
+        justify-content: space-evenly;
+        margin: 10px 0 10px 0;
+    }
+
     button {
-        margin: 20px 0 10px 0;
-        font-size: 12px;
+        font-size: 14px;
         padding: 8px;
     }
 
@@ -692,10 +749,6 @@ button {
         height: fit-content;
     }
 
-    .section {
-        margin-top: 220px;
-    }
-
     .sidebar {
         display: none;
     }
@@ -703,14 +756,6 @@ button {
     .searchContainer {
         margin-bottom: 10px;
         width: 100%;
-    }
-
-    .ansContainer {
-        margin-top: 140px;
-    }
-
-    .questionContainer {
-        margin-top: 120px;
     }
 
     .searchInput {
@@ -797,6 +842,21 @@ button {
     .loginFooter {
         display: none;
     }
+
+    .searchInput {
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 335px) {
+
+    .btn {
+        gap: 20px;
+    }
+
+    button {
+        font-size: 12px;
+    }
 }
 
 @media (min-width: 577px) and (max-width: 800px) {
@@ -807,6 +867,16 @@ button {
     .header2 {
         width: 100px;
         margin-bottom: -10px;
+    }
+
+    .headerIcons {
+        width: 100%;
+        justify-content: space-between;
+        padding: 5px;
+    }
+
+    .sidebar {
+        display: none;
     }
 
     .header1 {
@@ -831,6 +901,10 @@ button {
         height: fit-content;
     }
 
+    .sidebar {
+        display: none;
+    }
+
     .searchContainer {
         margin-bottom: 10px;
         width: 100%;
@@ -844,23 +918,14 @@ button {
         font-size: 20px;
     }
 
+    .section {
+        justify-content: center;
+    }
+
     .answerContainer {
         display: flex;
         flex-direction: column;
         margin-top: 50px !important;
-    }
-
-    .ansContainer {
-        margin-top: 140px;
-    }
-
-    .questionContainer {
-        margin-top: 120px;
-    }
-
-    .section {
-        display: grid;
-        grid-template-columns: 1fr 2fr;
     }
 
     .quesAndAnsContainer {
@@ -910,16 +975,10 @@ button {
         margin-bottom: -20px;
     }
 
-    .ansContainer {
-        margin-top: 160px;
-    }
-
-    .questionContainer {
-        margin-top: 140px;
-    }
-
-    .section {
-        margin-top: 230px;
+    .headerIcons {
+        width: 100%;
+        justify-content: space-between;
+        padding: 5px;
     }
 
     .searchContainer {
@@ -942,6 +1001,23 @@ button {
 @media (min-width: 1051px) {
 
     .searchInput {
-        min-width: 380px;
+        min-width: 350px;
     }
+
+}
+
+@media (min-width: 1051px) and (max-width: 1200px) {
+
+    .searchInput {
+        min-width: 350px;
+    }
+
+    .btn {
+        gap: 10px
+    }
+
+    .bttn {
+        padding: 8px;
+    }
+
 }

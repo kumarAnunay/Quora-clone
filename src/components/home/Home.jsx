@@ -7,8 +7,15 @@ import { auth } from "../../firebase";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
 import logo from "../../assets/Quora-Logo.png";
+import HomeIcon from "@mui/icons-material/Home";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
+import GroupsIcon from "@mui/icons-material/Groups";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
 
-const Home = ({ ques, queAns }) => {
+const Home = ({ ques, queAns, setQueAns }) => {
   const [input, setInput] = useState("");
   const [queSearch, setQueSearch] = useState(null);
   const userRef = useRef(getItem("user"));
@@ -79,6 +86,36 @@ const Home = ({ ques, queAns }) => {
     navigate("/home");
   };
 
+  const likeHandler = (questionId) => {
+    setQueAns((prevQueAns) => {
+      return prevQueAns.map((question) => {
+        if (question.id === questionId) {
+          return {
+            ...question,
+            upvote: true,
+            downvote: false,
+          };
+        }
+        return question;
+      });
+    });
+  };
+
+  const dislikeHandler = (questionId) => {
+    setQueAns((prevQueAns) => {
+      return prevQueAns.map((question) => {
+        if (question.id === questionId) {
+          return {
+            ...question,
+            upvote: false,
+            downvote: true,
+          };
+        }
+        return question;
+      });
+    });
+  };
+
   return (
     <>
       <div className="main">
@@ -90,6 +127,23 @@ const Home = ({ ques, queAns }) => {
               className="header2"
               onClick={homePage}
             />
+          </div>
+          <div className="headerIcons">
+            <div className="icon icon1">
+              <HomeIcon className="iconsHeader activeIcon" />
+            </div>
+            <div className="icon">
+              <ListAltIcon className="iconsHeader" />
+            </div>
+            <div className="icon">
+              <QuestionAnswerOutlinedIcon className="iconsHeader" />
+            </div>
+            <div className="icon">
+              <GroupsIcon className="iconsHeader" />
+            </div>
+            <div className="icon">
+              <NotificationsIcon className="iconsHeader" />
+            </div>
           </div>
           <div className="searchContainer">
             <input
@@ -110,8 +164,8 @@ const Home = ({ ques, queAns }) => {
             <button onClick={answerHandler} className="bttn">
               Add answers
             </button>
-            <button onClick={logoutHandler} className="bttn">
-              Logout
+            <button onClick={logoutHandler} className="logoutBttn">
+              <Avatar className="avatar logout" />
             </button>
           </div>
         </div>
@@ -135,6 +189,26 @@ const Home = ({ ques, queAns }) => {
                         </div>
                         <h3 className="homeQuestion">{list.question}</h3>
                         <p className="answer">- {list.answer}</p>
+                        <div className="vote">
+                          <span className="voteAlign">
+                            <ThumbUpOutlinedIcon
+                              className="voteIcon"
+                              onClick={() => likeHandler(list.id)}
+                              style={{
+                                color: list.upvote ? "green" : "#656565",
+                              }}
+                            />
+                          </span>
+                          <span className="voteAlign">
+                            <ThumbDownOffAltOutlinedIcon
+                              className="voteIcon"
+                              onClick={() => dislikeHandler(list.id)}
+                              style={{
+                                color: list.downvote ? "red" : "#656565",
+                              }}
+                            />
+                          </span>
+                        </div>
                       </div>
                     );
                   })
@@ -151,6 +225,22 @@ const Home = ({ ques, queAns }) => {
                       </div>
                       <h3 className="homeQuestion">{list.question}</h3>
                       <p className="answer">- {list.answer}</p>
+                      <div className="vote">
+                        <span className="voteAlign">
+                          <ThumbUpOutlinedIcon
+                            className="voteIcon"
+                            onClick={() => likeHandler(list.id)}
+                            style={{ color: list.upvote ? "green" : "#656565" }}
+                          />
+                        </span>
+                        <span className="voteAlign">
+                          <ThumbDownOffAltOutlinedIcon
+                            className="voteIcon"
+                            onClick={() => dislikeHandler(list.id)}
+                            style={{ color: list.downvote ? "red" : "#656565" }}
+                          />
+                        </span>
+                      </div>
                     </div>
                   );
                 })}

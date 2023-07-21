@@ -28,7 +28,7 @@ const AddQuestion = ({ ques, setQues }) => {
       setQues([
         ...ques,
         {
-          id: (ques.length + 1).toString(),
+          id: ques.length + 1,
           questionedBy: userRef.current?.username,
           question: questionInput,
         },
