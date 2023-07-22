@@ -116,6 +116,11 @@ const Home = ({ ques, queAns, setQueAns }) => {
     });
   };
 
+  const deleteHandler = (id) => {
+    const queAnsFilter = queAns?.filter((item) => item.id !== id);
+    setQueAns(queAnsFilter);
+  };
+
   return (
     <>
       <div className="main">
@@ -183,6 +188,17 @@ const Home = ({ ques, queAns, setQueAns }) => {
                   queSearch.map((list, index) => {
                     return (
                       <div className="list" key={index}>
+                        <div className="deleteBtnContainer">
+                          <button
+                            onClick={() => {
+                              deleteHandler(list.id);
+                            }}
+                            className="deleteBtn"
+                          >
+                            x
+                          </button>
+                        </div>
+
                         <div className="avatarName">
                           <Avatar className="avatar" />
                           <h2 className="answeredBy">{list.answeredBy}</h2>
@@ -219,9 +235,27 @@ const Home = ({ ques, queAns, setQueAns }) => {
                 {queAns.map((list, index) => {
                   return (
                     <div className="list" key={index}>
+                      <div className="deleteBtnContainer">
+                        <button
+                          onClick={() => {
+                            deleteHandler(list.id);
+                          }}
+                          className="deleteBtn"
+                        >
+                          x
+                        </button>
+                      </div>
+
                       <div className="avatarName">
                         <Avatar className="avatar" />
-                        <h2 className="answeredBy">{list.answeredBy}</h2>
+                        <div className="nameDate">
+                          <h2 className="answeredBy">{list.answeredBy}</h2>
+                          <div className="date">
+                            {list?.date || ""}
+                            {"  -  "}
+                            {list?.time || ""}
+                          </div>
+                        </div>
                       </div>
                       <h3 className="homeQuestion">{list.question}</h3>
                       <p className="answer">- {list.answer}</p>

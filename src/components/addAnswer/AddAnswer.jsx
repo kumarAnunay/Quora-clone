@@ -39,6 +39,31 @@ const AddAnswer = ({ ques, queAns, setQueAns }) => {
   };
 
   const addAnswerInputHandler = () => {
+    const month = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    const current = new Date();
+    const currentMonth = current.getMonth();
+    const currentYear = current.getFullYear();
+    const currentDay = current.getDate();
+
+    const monthCheck = month[currentMonth];
+
+    const dateCheck = `${currentDay} ${monthCheck} ${currentYear}`;
+
+    const time = new Date().toLocaleTimeString();
+
     if (selectedQue.questionedBy && answerInput !== "") {
       setQueAns([
         ...queAns,
@@ -50,6 +75,8 @@ const AddAnswer = ({ ques, queAns, setQueAns }) => {
           answer: answerInput,
           upvote: false,
           downvote: false,
+          time: time,
+          date: dateCheck,
         },
       ]);
       setAnswerInput("");
