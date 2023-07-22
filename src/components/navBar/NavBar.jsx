@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { getItem } from "../../getUser";
 import { auth } from "../../firebase";
 import logo from "../../assets/Quora-Logo.png";
+import { Avatar } from "@mui/material";
 
 const NavBar = () => {
   const userRef = useRef(getItem("user"));
@@ -68,8 +69,8 @@ const NavBar = () => {
         >
           Add answers
         </button>
-        <button onClick={logoutHandler} className="bttn">
-          Logout
+        <button onClick={logoutHandler} className="logoutBttn">
+          <Avatar className="avatar logout" />
         </button>
       </div>
     </div>
