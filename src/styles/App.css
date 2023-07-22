@@ -410,13 +410,12 @@ button {
 .queContainer {
     height: fit-content;
     background-color: white;
-    border-radius: 8px;
     box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .questionHeader {
     margin-bottom: 10px;
-    border-bottom: 2px solid grey;
+    border-bottom: 2px solid #CD1818;
     text-align: center;
     padding: 8px;
 }
@@ -459,6 +458,10 @@ button {
 .iconsHeader {
     color: #6d6e6e;
     font-size: 25px !important;
+}
+
+.iconsHeader:hover {
+    color: #CD1818;
 }
 
 .icon:hover {
