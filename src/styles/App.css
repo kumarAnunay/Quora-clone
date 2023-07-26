@@ -487,13 +487,14 @@ button {
     padding: 5px;
 }
 
-.icon1 {
-    border-bottom: 2px solid #CD1818;
+.iconActive {
+    color: #CD1818 !important;
 }
 
 .iconsHeader {
     color: #6d6e6e;
-    font-size: 25px !important;
+    font-size: 30px !important;
+    cursor: pointer;
 }
 
 .iconsHeader:hover {
@@ -506,7 +507,6 @@ button {
 
 .activeIcon {
     color: #c62828 !important;
-
 }
 
 .questionContainer {
@@ -561,10 +561,8 @@ button {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    border: 1px solid gray;
     min-height: 100vh;
     background-color: #f1f2f2;
-    padding: 50px;
 }
 
 .answeredBy {
@@ -632,7 +630,7 @@ button {
 
 .ansHeader {
     margin-bottom: 10px;
-    border-bottom: 3px solid gray;
+    border-bottom: 3px solid #CD1818;
 }
 
 .section {
@@ -657,6 +655,7 @@ button {
     align-items: center;
     padding: 5px;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .sidebarOption:hover {
@@ -687,6 +686,12 @@ button {
     color: gray;
     font-weight: 400;
     font-size: 13px;
+}
+
+.navbarIcons {
+    display: flex;
+    gap: 80px;
+    align-items: center;
 }
 
 .voteIcon {
@@ -723,6 +728,25 @@ button {
 .logoutBttn {
     all: unset;
     cursor: pointer;
+}
+
+.iconsPages {
+    display: flex;
+    gap: 50px;
+    padding: 30px 35px;
+}
+
+.quesionListWidth {
+    width: 100% !important;
+}
+
+.imageSite {
+    width: 100%;
+}
+
+.siteImage {
+    width: 70%;
+    margin: 0 15%;
 }
 
 /* Media queries */
@@ -888,6 +912,16 @@ button {
     .searchInput {
         font-size: 13px;
     }
+
+    .navbarIcons {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    .smallDevicesIcons {
+        justify-content: space-between;
+    }
 }
 
 @media (max-width: 335px) {
@@ -904,6 +938,15 @@ button {
 @media (min-width: 577px) and (max-width: 800px) {
     .container {
         width: 60%;
+    }
+
+    .iconsPages {
+        justify-content: center;
+    }
+
+    .navbarIcons {
+        flex-direction: column;
+        gap: 10px;
     }
 
     .header2 {
@@ -1004,6 +1047,14 @@ button {
     .googleBttn {
         font-size: 14px;
     }
+
+    .navbarIcons {
+        width: 100%;
+    }
+
+    .smallDevicesIcons {
+        justify-content: space-between;
+    }
 }
 
 @media (min-width: 800px) and (max-width: 1050px) {
@@ -1011,6 +1062,11 @@ button {
         padding: 10px;
         flex-direction: column;
         height: fit-content;
+    }
+
+    .navBar {
+        display: flex;
+        flex-direction: row;
     }
 
     .header2 {

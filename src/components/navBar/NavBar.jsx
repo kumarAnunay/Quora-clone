@@ -5,6 +5,11 @@ import { getItem } from "../../getUser";
 import { auth } from "../../firebase";
 import logo from "../../assets/Quora-Logo.png";
 import { Avatar } from "@mui/material";
+import HomeIcon from "@mui/icons-material/Home";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
+import GroupsIcon from "@mui/icons-material/Groups";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 
 const NavBar = () => {
   const userRef = useRef(getItem("user"));
@@ -14,10 +19,29 @@ const NavBar = () => {
 
   useEffect(() => {
     const currentPath = location.pathname;
-    if (currentPath === "/add-questions") {
-      setActiveButton("questions");
-    } else if (currentPath === "/add-answers") {
-      setActiveButton("answers");
+
+    switch (currentPath) {
+      case "/home":
+        setActiveButton("home");
+        break;
+      case "/questions":
+        setActiveButton("questions");
+        break;
+      case "/add-answers":
+        setActiveButton("addAnswers");
+        break;
+      case "/spaces":
+        setActiveButton("spaces");
+        break;
+      case "/notifications":
+        setActiveButton("notifications");
+        break;
+      case "/add-questions":
+        setActiveButton("addQuestions");
+        break;
+      default:
+        setActiveButton("");
+        break;
     }
   }, [location]);
 
@@ -27,6 +51,14 @@ const NavBar = () => {
 
   const answerHandler = () => {
     navigate("/add-answers");
+  };
+
+  const notificationPage = () => {
+    navigate("/notifications");
+  };
+
+  const spacePage = () => {
+    navigate("/spaces");
   };
 
   const logoutHandler = () => {
@@ -47,28 +79,68 @@ const NavBar = () => {
     }
   };
 
+  const questionListPage = () => {
+    navigate("/questions");
+  };
+
   const homePage = () => {
     navigate("/home");
   };
 
   return (
     <div className="headerContainer navBar">
-      <div>
-        <img src={logo} alt="Quora" className="header2" onClick={homePage} />
+      <div className="navbarIcons">
+        <div>
+          <img src={logo} alt="Quora" className="header2" onClick={homePage} />
+        </div>
+        <div className="headerIcons smallDevicesIcons">
+          <div className="icon" title="Home" onClick={homePage}>
+            <HomeIcon
+              className={`iconsHeader ${
+                activeButton === "home" ? "iconActive" : ""
+              }`}
+            />
+          </div>
+          <div className="icon" title="Question" onClick={questionListPage}>
+            <ListAltIcon
+              className={`iconsHeader ${
+                activeButton === "questions" ? "iconActive" : ""
+              }`}
+            />
+          </div>
+          <div className="icon" title="Answer" onClick={answerHandler}>
+            <QuestionAnswerOutlinedIcon
+              className={`iconsHeader ${
+                activeButton === "addAnswers" ? "iconActive" : ""
+              }`}
+            />
+          </div>
+          <div className="icon" title="Spaces" onClick={spacePage}>
+            <GroupsIcon
+              className={`iconsHeader ${
+                activeButton === "spaces" ? "iconActive" : ""
+              }`}
+            />
+          </div>
+          <div className="icon" title="Notification" onClick={notificationPage}>
+            <NotificationsIcon
+              className={`iconsHeader ${
+                activeButton === "notifications" ? "iconActive" : ""
+              }`}
+            />
+          </div>
+        </div>
       </div>
       <div className="btn">
         <button
-          className={`bttn ${activeButton === "questions" ? "bttnActive" : ""}`}
+          className={`bttn ${
+            activeButton === "AddQuestions" ? "bttnActive" : ""
+          }`}
           onClick={questionHandler}
         >
           Add questions
         </button>
-        <button
-          className={`bttn ${activeButton === "answers" ? "bttnActive" : ""}`}
-          onClick={answerHandler}
-        >
-          Add answers
-        </button>
+
         <button onClick={logoutHandler} className="logoutBttn">
           <Avatar className="avatar logout" />
         </button>

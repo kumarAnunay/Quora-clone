@@ -86,6 +86,18 @@ const Home = ({ ques, queAns, setQueAns }) => {
     navigate("/home");
   };
 
+  const questionListPage = () => {
+    navigate("/questions");
+  };
+
+  const notificationPage = () => {
+    navigate("/notifications");
+  };
+
+  const spacePage = () => {
+    navigate("/spaces");
+  };
+
   const likeHandler = (questionId) => {
     setQueAns((prevQueAns) => {
       return prevQueAns.map((question) => {
@@ -134,19 +146,23 @@ const Home = ({ ques, queAns, setQueAns }) => {
             />
           </div>
           <div className="headerIcons">
-            <div className="icon icon1">
+            <div className="icon" title="Home" onClick={homePage}>
               <HomeIcon className="iconsHeader activeIcon" />
             </div>
-            <div className="icon">
+            <div className="icon" title="Question" onClick={questionListPage}>
               <ListAltIcon className="iconsHeader" />
             </div>
-            <div className="icon">
+            <div className="icon" title="Answer" onClick={answerHandler}>
               <QuestionAnswerOutlinedIcon className="iconsHeader" />
             </div>
-            <div className="icon">
+            <div className="icon" title="Spaces" onClick={spacePage}>
               <GroupsIcon className="iconsHeader" />
             </div>
-            <div className="icon">
+            <div
+              className="icon"
+              title="Notification"
+              onClick={notificationPage}
+            >
               <NotificationsIcon className="iconsHeader" />
             </div>
           </div>
@@ -165,9 +181,6 @@ const Home = ({ ques, queAns, setQueAns }) => {
           <div className="btn">
             <button onClick={questionHandler} className="bttn">
               Add questions
-            </button>
-            <button onClick={answerHandler} className="bttn">
-              Add answers
             </button>
             <button onClick={logoutHandler} className="logoutBttn">
               <Avatar className="avatar logout" />

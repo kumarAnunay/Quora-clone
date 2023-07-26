@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getItem } from "../../getUser";
 import NavBar from "../navBar/NavBar";
+import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
 
 const AddAnswer = ({ ques, queAns, setQueAns }) => {
@@ -92,50 +93,55 @@ const AddAnswer = ({ ques, queAns, setQueAns }) => {
   return (
     <>
       <NavBar />
-      <div className="ansContainer">
-        <div className="answerContainer">
-          <div className="answerquestionContainer">
-            <h2 className="ansHeader">Select Question</h2>
-            <div>
-              {ques.map((question, index) => {
-                return (
-                  <p
-                    key={index}
-                    className={`questionAns ${
-                      selectedQuestionIndex === index ? "active" : ""
-                    }`}
-                    onClick={() =>
-                      handleQueAns(
-                        question.question,
-                        question.questionedBy,
-                        index
-                      )
-                    }
-                  >
-                    {question.question}
-                  </p>
-                );
-              })}
-            </div>
-          </div>
-          <textarea
-            type="text"
-            id="answerInput"
-            value={answerInput}
-            placeholder="   Type your Answer here ..."
-            onChange={inputHandler}
-            className="answerInput"
-            ref={inputRef}
-          ></textarea>
+      <div className="main iconsPages">
+        <div className="sidebar">
+          <Sidebar />
         </div>
+        <div className="ansContainer">
+          <div className="answerContainer">
+            <div className="answerquestionContainer">
+              <h2 className="ansHeader">Select Question</h2>
+              <div>
+                {ques.map((question, index) => {
+                  return (
+                    <p
+                      key={index}
+                      className={`questionAns ${
+                        selectedQuestionIndex === index ? "active" : ""
+                      }`}
+                      onClick={() =>
+                        handleQueAns(
+                          question.question,
+                          question.questionedBy,
+                          index
+                        )
+                      }
+                    >
+                      Q. {question.question}
+                    </p>
+                  );
+                })}
+              </div>
+            </div>
+            <textarea
+              type="text"
+              id="answerInput"
+              value={answerInput}
+              placeholder="   Type your Answer here ..."
+              onChange={inputHandler}
+              className="answerInput"
+              ref={inputRef}
+            ></textarea>
+          </div>
 
-        <div className="answerBtnContainer">
-          <button className="pageBtn" onClick={cancelPage}>
-            Cancel
-          </button>
-          <button className="pageBtn" onClick={addAnswerInputHandler}>
-            Add Answer
-          </button>
+          <div className="answerBtnContainer">
+            <button className="pageBtn" onClick={cancelPage}>
+              Cancel
+            </button>
+            <button className="pageBtn" onClick={addAnswerInputHandler}>
+              Add Answer
+            </button>
+          </div>
         </div>
       </div>
       <Footer />
