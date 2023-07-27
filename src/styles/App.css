@@ -205,6 +205,9 @@ button {
     padding: 5px;
     background-color: #ffffff;
     height: 70px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 
 .searchContainer {
@@ -522,6 +525,7 @@ button {
     min-height: 100vh;
     border: 1px solid gray;
     background-color: #f1f2f2;
+    padding-top: 70px;
 }
 
 .questionInput {
@@ -644,7 +648,7 @@ button {
     gap: 80px;
     margin: 0 3%;
     padding-bottom: 30px;
-    padding-top: 30px;
+    padding-top: 100px;
 }
 
 .sidebar {
@@ -742,7 +746,7 @@ button {
 .iconsPages {
     display: flex;
     gap: 80px;
-    padding: 30px 35px;
+    padding: 100px 35px;
 }
 
 .quesionListWidth {
@@ -762,6 +766,19 @@ button {
 @media (max-width: 576px) {
     .container {
         width: 90%;
+    }
+
+    .section {
+        justify-content: center;
+        padding-top: 340px;
+    }
+
+    .iconsPages {
+        padding-top: 280px;
+    }
+
+    .questionContainer {
+        padding-top: 220px;
     }
 
     .header2 {
@@ -793,7 +810,6 @@ button {
 
     .btn {
         justify-content: space-evenly;
-        margin: 10px 0 10px 0;
     }
 
     button {
@@ -945,6 +961,11 @@ button {
 
     .iconsPages {
         justify-content: center;
+        padding-top: 300px;
+    }
+
+    .questionContainer {
+        padding-top: 260px;
     }
 
     .navbarIcons {
@@ -1008,6 +1029,7 @@ button {
 
     .section {
         justify-content: center;
+        padding-top: 360px;
     }
 
     .answerContainer {
@@ -1060,6 +1082,19 @@ button {
         padding: 10px;
         flex-direction: column;
         height: fit-content;
+    }
+
+    .iconsPages {
+        justify-content: center;
+        padding-top: 140px;
+    }
+
+    .questionContainer {
+        padding-top: 160px;
+    }
+
+    .section {
+        padding-top: 330px;
     }
 
     .navBar {
