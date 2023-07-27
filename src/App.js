@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signup from "./components/signup/Signup";
 import Login from "./components/login/Login";
+import CreateSpace from "./components/createSpace/CreateSpace";
 import Home from "./components/home/Home";
 import Questions from "./components/questions/Questions";
 import AddQuestion from "./components/addQuestion/AddQuestion";
@@ -69,6 +70,10 @@ const App = () => {
     {
       path: `/add-answers`,
       element: <AddAnswer ques={ques} queAns={queAns} setQueAns={setQueAns} />,
+    },
+    {
+      path: `/create-space`,
+      element: <CreateSpace />,
     },
     {
       path: `/history`,

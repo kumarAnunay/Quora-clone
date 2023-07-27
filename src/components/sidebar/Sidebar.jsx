@@ -12,6 +12,9 @@ const Sidebar = () => {
     const currentPath = location.pathname;
 
     switch (currentPath) {
+      case "/create-space":
+        setActiveSidebar("createSpace");
+        break;
       case "/history":
         setActiveSidebar("history");
         break;
@@ -56,9 +59,18 @@ const Sidebar = () => {
     navigate("/movies");
   };
 
+  const createSpace = () => {
+    navigate("/create-space");
+  };
+
   return (
     <div className="sidebarOptions">
-      <div className="sidebarOption">
+      <div
+        className={`sidebarOption ${
+          activeSidebar === "createSpace" ? "sidebarActive" : ""
+        }`}
+        onClick={createSpace}
+      >
         <Add />
         <p>Create Space</p>
       </div>
