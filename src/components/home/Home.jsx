@@ -71,17 +71,6 @@ const Home = ({ ques, queAns, setQueAns }) => {
     // localStorage.removeItem("user");
   };
 
-  const scrollToQuestion = (question) => {
-    const queAnsIndex = queAns.findIndex((item) => item.question === question);
-    if (queAnsIndex !== -1) {
-      const listDivs = document.querySelectorAll(".list");
-      const targetDiv = listDivs[queAnsIndex];
-      if (targetDiv) {
-        targetDiv.scrollIntoView({ behavior: "smooth" });
-      }
-    }
-  };
-
   const homePage = () => {
     navigate("/home");
   };
@@ -149,10 +138,14 @@ const Home = ({ ques, queAns, setQueAns }) => {
             <div className="icon" title="Home" onClick={homePage}>
               <HomeIcon className="iconsHeader activeIcon" />
             </div>
-            <div className="icon" title="Question" onClick={questionListPage}>
+            <div
+              className="icon"
+              title="Question-List"
+              onClick={questionListPage}
+            >
               <ListAltIcon className="iconsHeader" />
             </div>
-            <div className="icon" title="Answer" onClick={answerHandler}>
+            <div className="icon" title="Add-Answer" onClick={answerHandler}>
               <QuestionAnswerOutlinedIcon className="iconsHeader" />
             </div>
             <div className="icon" title="Spaces" onClick={spacePage}>
@@ -192,62 +185,14 @@ const Home = ({ ques, queAns, setQueAns }) => {
           <div className="sidebar">
             <Sidebar />
           </div>
-          <div className="quesAndAnsContainer">
-            {queSearch ? (
-              <div className="queAnsContainer">
-                {queSearch.length === 0 ? (
-                  <h3 className="noMatch">No results found</h3>
-                ) : (
-                  queSearch.map((list, index) => {
-                    return (
-                      <div className="list" key={index}>
-                        <div className="deleteBtnContainer">
-                          <button
-                            onClick={() => {
-                              deleteHandler(list.id);
-                            }}
-                            className="deleteBtn"
-                          >
-                            x
-                          </button>
-                        </div>
-
-                        <div className="avatarName">
-                          <Avatar className="avatar" />
-                          <h2 className="answeredBy">{list.answeredBy}</h2>
-                        </div>
-                        <h3 className="homeQuestion">{list.question}</h3>
-                        <p className="answer">- {list.answer}</p>
-                        <div className="vote">
-                          <span className="voteAlign">
-                            <ThumbUpOutlinedIcon
-                              className="voteIcon"
-                              onClick={() => likeHandler(list.id)}
-                              style={{
-                                color: list.upvote ? "green" : "#656565",
-                              }}
-                            />
-                          </span>
-                          <span className="voteAlign">
-                            <ThumbDownOffAltOutlinedIcon
-                              className="voteIcon"
-                              onClick={() => dislikeHandler(list.id)}
-                              style={{
-                                color: list.downvote ? "red" : "#656565",
-                              }}
-                            />
-                          </span>
-                        </div>
-                      </div>
-                    );
-                  })
-                )}
-              </div>
-            ) : (
-              <div className="queAnsContainer">
-                {queAns.map((list, index) => {
+          {queSearch ? (
+            <div className="queAnsContainer">
+              {queSearch.length === 0 ? (
+                <h3 className="noMatch searchQueContainer">No results found</h3>
+              ) : (
+                queSearch.map((list, index) => {
                   return (
-                    <div className="list" key={index}>
+                    <div className="list searchQueContainer" key={index}>
                       <div className="deleteBtnContainer">
                         <button
                           onClick={() => {
@@ -261,14 +206,7 @@ const Home = ({ ques, queAns, setQueAns }) => {
 
                       <div className="avatarName">
                         <Avatar className="avatar" />
-                        <div className="nameDate">
-                          <h2 className="answeredBy">{list.answeredBy}</h2>
-                          <div className="date">
-                            {list?.date || ""}
-                            {"  -  "}
-                            {list?.time || ""}
-                          </div>
-                        </div>
+                        <h2 className="answeredBy">{list.answeredBy}</h2>
                       </div>
                       <h3 className="homeQuestion">{list.question}</h3>
                       <p className="answer">- {list.answer}</p>
@@ -277,40 +215,76 @@ const Home = ({ ques, queAns, setQueAns }) => {
                           <ThumbUpOutlinedIcon
                             className="voteIcon"
                             onClick={() => likeHandler(list.id)}
-                            style={{ color: list.upvote ? "green" : "#656565" }}
+                            style={{
+                              color: list.upvote ? "green" : "#656565",
+                            }}
                           />
                         </span>
                         <span className="voteAlign">
                           <ThumbDownOffAltOutlinedIcon
                             className="voteIcon"
                             onClick={() => dislikeHandler(list.id)}
-                            style={{ color: list.downvote ? "red" : "#656565" }}
+                            style={{
+                              color: list.downvote ? "red" : "#656565",
+                            }}
                           />
                         </span>
                       </div>
                     </div>
                   );
-                })}
-              </div>
-            )}
-
-            <div className="queContainer">
-              <h2 className="questionHeader">Question List</h2>
-              <div className="questionHome">
-                {ques.map((list) => {
-                  return (
-                    <p
-                      className="questionList"
-                      key={list.id}
-                      onClick={() => scrollToQuestion(list.question)}
-                    >
-                      {list.question}
-                    </p>
-                  );
-                })}
-              </div>
+                })
+              )}
             </div>
-          </div>
+          ) : (
+            <div className="queAnsContainer">
+              {queAns.map((list, index) => {
+                return (
+                  <div className="list" key={index}>
+                    <div className="deleteBtnContainer">
+                      <button
+                        onClick={() => {
+                          deleteHandler(list.id);
+                        }}
+                        className="deleteBtn"
+                      >
+                        x
+                      </button>
+                    </div>
+
+                    <div className="avatarName">
+                      <Avatar className="avatar" />
+                      <div className="nameDate">
+                        <h2 className="answeredBy">{list.answeredBy}</h2>
+                        <div className="date">
+                          {list?.date || ""}
+                          {"  -  "}
+                          {list?.time || ""}
+                        </div>
+                      </div>
+                    </div>
+                    <h3 className="homeQuestion">{list.question}</h3>
+                    <p className="answer">- {list.answer}</p>
+                    <div className="vote">
+                      <span className="voteAlign">
+                        <ThumbUpOutlinedIcon
+                          className="voteIcon"
+                          onClick={() => likeHandler(list.id)}
+                          style={{ color: list.upvote ? "green" : "#656565" }}
+                        />
+                      </span>
+                      <span className="voteAlign">
+                        <ThumbDownOffAltOutlinedIcon
+                          className="voteIcon"
+                          onClick={() => dislikeHandler(list.id)}
+                          style={{ color: list.downvote ? "red" : "#656565" }}
+                        />
+                      </span>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
       <Footer />

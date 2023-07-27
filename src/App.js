@@ -8,7 +8,16 @@ import AddQuestion from "./components/addQuestion/AddQuestion";
 import AddAnswer from "./components/addAnswer/AddAnswer";
 import Notifications from "./components/notifications/Notifications";
 import Spaces from "./components/spaces/Spaces";
-import { questionAndAnswers, questionLists } from "./data";
+import {
+  questionAndAnswers,
+  questionLists,
+  history,
+  science,
+  movies,
+  health,
+  music,
+  cooking,
+} from "./data";
 import { quesList, queAnsList } from "./getUser";
 import "./styles/App.css";
 import History from "./components/history/History";
@@ -21,6 +30,12 @@ import Movies from "./components/movies/Movies";
 const App = () => {
   const [queAns, setQueAns] = useState(queAnsList || questionAndAnswers);
   const [ques, setQues] = useState(quesList || questionLists);
+  const [historyQue, setHistoryQue] = useState(history);
+  const [cookingQue, setCookingQue] = useState(cooking);
+  const [musicQue, setMusicQue] = useState(music);
+  const [scienceQue, setScienceQue] = useState(science);
+  const [healthQue, setHealthQue] = useState(health);
+  const [moviesQue, setMoviesQue] = useState(movies);
 
   const router = createBrowserRouter([
     {
@@ -57,27 +72,33 @@ const App = () => {
     },
     {
       path: `/history`,
-      element: <History />,
+      element: (
+        <History historyQue={historyQue} setHistoryQue={setHistoryQue} />
+      ),
     },
     {
       path: `/cooking`,
-      element: <Cooking />,
+      element: (
+        <Cooking cookingQue={cookingQue} setCookingQue={setCookingQue} />
+      ),
     },
     {
       path: `/music`,
-      element: <Music />,
+      element: <Music musicQue={musicQue} setMusicQue={setMusicQue} />,
     },
     {
       path: `/science`,
-      element: <Science />,
+      element: (
+        <Science scienceQue={scienceQue} setScienceQue={setScienceQue} />
+      ),
     },
     {
       path: `/health`,
-      element: <Health />,
+      element: <Health healthQue={healthQue} setHealthQue={setHealthQue} />,
     },
     {
       path: `/movies`,
-      element: <Movies />,
+      element: <Movies moviesQue={moviesQue} setMoviesQue={setMoviesQue} />,
     },
   ]);
 

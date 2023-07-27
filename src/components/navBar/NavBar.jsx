@@ -134,7 +134,7 @@ const NavBar = () => {
       <div className="btn">
         <button
           className={`bttn ${
-            activeButton === "AddQuestions" ? "bttnActive" : ""
+            activeButton === "addQuestions" ? "bttnActive" : ""
           }`}
           onClick={questionHandler}
         >
