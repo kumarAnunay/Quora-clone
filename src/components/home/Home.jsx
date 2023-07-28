@@ -206,7 +206,14 @@ const Home = ({ ques, queAns, setQueAns }) => {
 
                       <div className="avatarName">
                         <Avatar className="avatar" />
-                        <h2 className="answeredBy">{list.answeredBy}</h2>
+                        <div className="nameDate">
+                          <h2 className="answeredBy">{list.answeredBy}</h2>
+                          <div className="date">
+                            {list?.date || ""}
+                            {"  -  "}
+                            {list?.time || ""}
+                          </div>
+                        </div>
                       </div>
                       <h3 className="homeQuestion">{list.question}</h3>
                       <p className="answer">- {list.answer}</p>
