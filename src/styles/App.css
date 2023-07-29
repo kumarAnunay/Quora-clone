@@ -183,7 +183,6 @@ button {
 .forgotPassword {
     color: grey;
     font-size: 13px;
-    cursor: pointer;
 }
 
 .main {
@@ -352,7 +351,6 @@ button {
     border-bottom: 1px solid #dee0e1;
     padding: 15px;
     font-size: 13px;
-    cursor: pointer;
 }
 
 .date {

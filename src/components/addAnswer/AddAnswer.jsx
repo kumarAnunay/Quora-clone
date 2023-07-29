@@ -83,6 +83,7 @@ const AddAnswer = ({ ques, queAns, setQueAns }) => {
       setAnswerInput("");
       alert("Answer added");
       setSelectedQuestionIndex(null);
+      navigate("/home");
     } else {
       alert(
         "Please select a question from the questions list and write your answer."

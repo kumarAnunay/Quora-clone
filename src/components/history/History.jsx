@@ -2,8 +2,8 @@ import NavBar from "../navBar/NavBar";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
 import { Avatar } from "@mui/material";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 
 const History = ({ historyQue, setHistoryQue }) => {
   const likeHandler = (questionId) => {
@@ -78,14 +78,14 @@ const History = ({ historyQue, setHistoryQue }) => {
                 <p className="answer">- {list.answer}</p>
                 <div className="vote">
                   <span className="voteAlign">
-                    <ThumbUpOutlinedIcon
+                    <ThumbUpIcon
                       className="voteIcon"
                       onClick={() => likeHandler(list.id)}
                       style={{ color: list.upvote ? "green" : "#656565" }}
                     />
                   </span>
                   <span className="voteAlign">
-                    <ThumbDownOffAltOutlinedIcon
+                    <ThumbDownIcon
                       className="voteIcon"
                       onClick={() => dislikeHandler(list.id)}
                       style={{ color: list.downvote ? "red" : "#656565" }}

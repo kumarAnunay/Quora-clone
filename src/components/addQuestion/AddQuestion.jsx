@@ -35,6 +35,7 @@ const AddQuestion = ({ ques, setQues }) => {
       ]);
       setQuestionInput("");
       alert("Question added");
+      navigate("/questions");
     } else {
       alert("Write your question in Input Box and a valid question");
     }

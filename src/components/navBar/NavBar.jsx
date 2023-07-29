@@ -142,7 +142,7 @@ const NavBar = () => {
         </button>
 
         <button onClick={logoutHandler} className="logoutBttn">
-          <Avatar className="avatar logout" />
+          <Avatar className="avatar logout" title="Logout" />
         </button>
       </div>
     </div>

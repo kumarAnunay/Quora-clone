@@ -12,8 +12,8 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
 import GroupsIcon from "@mui/icons-material/Groups";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
-import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 
 const Home = ({ ques, queAns, setQueAns }) => {
   const [input, setInput] = useState("");
@@ -176,7 +176,7 @@ const Home = ({ ques, queAns, setQueAns }) => {
               Add questions
             </button>
             <button onClick={logoutHandler} className="logoutBttn">
-              <Avatar className="avatar logout" />
+              <Avatar className="avatar logout" title="Logout" />
             </button>
           </div>
         </div>
@@ -219,7 +219,7 @@ const Home = ({ ques, queAns, setQueAns }) => {
                       <p className="answer">- {list.answer}</p>
                       <div className="vote">
                         <span className="voteAlign">
-                          <ThumbUpOutlinedIcon
+                          <ThumbUpIcon
                             className="voteIcon"
                             onClick={() => likeHandler(list.id)}
                             style={{
@@ -228,7 +228,7 @@ const Home = ({ ques, queAns, setQueAns }) => {
                           />
                         </span>
                         <span className="voteAlign">
-                          <ThumbDownOffAltOutlinedIcon
+                          <ThumbDownIcon
                             className="voteIcon"
                             onClick={() => dislikeHandler(list.id)}
                             style={{
@@ -273,14 +273,14 @@ const Home = ({ ques, queAns, setQueAns }) => {
                     <p className="answer">- {list.answer}</p>
                     <div className="vote">
                       <span className="voteAlign">
-                        <ThumbUpOutlinedIcon
+                        <ThumbUpIcon
                           className="voteIcon"
                           onClick={() => likeHandler(list.id)}
                           style={{ color: list.upvote ? "green" : "#656565" }}
                         />
                       </span>
                       <span className="voteAlign">
-                        <ThumbDownOffAltOutlinedIcon
+                        <ThumbDownIcon
                           className="voteIcon"
                           onClick={() => dislikeHandler(list.id)}
                           style={{ color: list.downvote ? "red" : "#656565" }}
