@@ -10,6 +10,7 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
 import GroupsIcon from "@mui/icons-material/Groups";
 import NotificationsIcon from "@mui/icons-material/Notifications";
+import Tooltip from "@mui/material/Tooltip";
 
 const NavBar = () => {
   const userRef = useRef(getItem("user"));
@@ -94,40 +95,54 @@ const NavBar = () => {
           <img src={logo} alt="Quora" className="header2" onClick={homePage} />
         </div>
         <div className="headerIcons smallDevicesIcons">
-          <div className="icon" title="Home" onClick={homePage}>
-            <HomeIcon
-              className={`iconsHeader ${
-                activeButton === "home" ? "iconActive" : ""
-              }`}
-            />
+          <div className="icon" onClick={homePage}>
+            <Tooltip title="Home">
+              <HomeIcon
+                className={`iconsHeader ${
+                  activeButton === "home" ? "iconActive" : ""
+                }`}
+              />
+            </Tooltip>
           </div>
-          <div className="icon" title="Question" onClick={questionListPage}>
-            <ListAltIcon
-              className={`iconsHeader ${
-                activeButton === "questions" ? "iconActive" : ""
-              }`}
-            />
+
+          <div className="icon" onClick={questionListPage}>
+            <Tooltip title="Question List">
+              <ListAltIcon
+                className={`iconsHeader ${
+                  activeButton === "questions" ? "iconActive" : ""
+                }`}
+              />
+            </Tooltip>
           </div>
-          <div className="icon" title="Answer" onClick={answerHandler}>
-            <QuestionAnswerOutlinedIcon
-              className={`iconsHeader ${
-                activeButton === "addAnswers" ? "iconActive" : ""
-              }`}
-            />
+
+          <div className="icon" onClick={answerHandler}>
+            <Tooltip title="Add Answer">
+              <QuestionAnswerOutlinedIcon
+                className={`iconsHeader ${
+                  activeButton === "addAnswers" ? "iconActive" : ""
+                }`}
+              />
+            </Tooltip>
           </div>
-          <div className="icon" title="Spaces" onClick={spacePage}>
-            <GroupsIcon
-              className={`iconsHeader ${
-                activeButton === "spaces" ? "iconActive" : ""
-              }`}
-            />
+
+          <div className="icon" onClick={spacePage}>
+            <Tooltip title="Spaces">
+              <GroupsIcon
+                className={`iconsHeader ${
+                  activeButton === "spaces" ? "iconActive" : ""
+                }`}
+              />
+            </Tooltip>
           </div>
-          <div className="icon" title="Notification" onClick={notificationPage}>
-            <NotificationsIcon
-              className={`iconsHeader ${
-                activeButton === "notifications" ? "iconActive" : ""
-              }`}
-            />
+
+          <div className="icon" onClick={notificationPage}>
+            <Tooltip title="Notification">
+              <NotificationsIcon
+                className={`iconsHeader ${
+                  activeButton === "notifications" ? "iconActive" : ""
+                }`}
+              />
+            </Tooltip>
           </div>
         </div>
       </div>

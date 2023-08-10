@@ -14,6 +14,7 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import ThumbDownIcon from "@mui/icons-material/ThumbDown";
+import Tooltip from "@mui/material/Tooltip";
 
 const Home = ({ ques, queAns, setQueAns }) => {
   const [input, setInput] = useState("");
@@ -135,28 +136,30 @@ const Home = ({ ques, queAns, setQueAns }) => {
             />
           </div>
           <div className="headerIcons">
-            <div className="icon" title="Home" onClick={homePage}>
-              <HomeIcon className="iconsHeader activeIcon" />
+            <div className="icon" onClick={homePage}>
+              <Tooltip title="Home">
+                <HomeIcon className="iconsHeader activeIcon" />
+              </Tooltip>
             </div>
-            <div
-              className="icon"
-              title="Question-List"
-              onClick={questionListPage}
-            >
-              <ListAltIcon className="iconsHeader" />
+            <div className="icon" onClick={questionListPage}>
+              <Tooltip title="Question-List">
+                <ListAltIcon className="iconsHeader" />
+              </Tooltip>
             </div>
-            <div className="icon" title="Add-Answer" onClick={answerHandler}>
-              <QuestionAnswerOutlinedIcon className="iconsHeader" />
+            <div className="icon" onClick={answerHandler}>
+              <Tooltip title="Add-Answer">
+                <QuestionAnswerOutlinedIcon className="iconsHeader" />
+              </Tooltip>
             </div>
-            <div className="icon" title="Spaces" onClick={spacePage}>
-              <GroupsIcon className="iconsHeader" />
+            <div className="icon" onClick={spacePage}>
+              <Tooltip title="Spaces">
+                <GroupsIcon className="iconsHeader" />
+              </Tooltip>
             </div>
-            <div
-              className="icon"
-              title="Notification"
-              onClick={notificationPage}
-            >
-              <NotificationsIcon className="iconsHeader" />
+            <div className="icon" onClick={notificationPage}>
+              <Tooltip title="Notification">
+                <NotificationsIcon className="iconsHeader" />
+              </Tooltip>
             </div>
           </div>
           <div className="searchContainer">

@@ -743,7 +743,7 @@ button {
 
 .iconsPages {
     display: flex;
-    gap: 80px;
+    gap: 15px;
     padding: 100px 35px;
 }
 
