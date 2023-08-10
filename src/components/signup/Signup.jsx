@@ -2,6 +2,8 @@ import { TextField } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import login from "../../assets/login.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signup = () => {
   const [signupDetails, setSignupDetails] = useState({
@@ -15,7 +17,6 @@ const Signup = () => {
   const nameErrorRef = useRef(null);
   const passwordErrorRef = useRef(null);
   const emailErrorRef = useRef(null);
-  const successRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -44,13 +45,21 @@ const Signup = () => {
         })
       );
 
-      successRef.current.style.display = "block";
       setSignupDetails({
         name: "",
         email: "",
         password: "",
       });
-
+      toast.success("Account successfully Registered!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       setRegistered(true);
     }
   };
@@ -59,7 +68,7 @@ const Signup = () => {
     if (registered) {
       setTimeout(() => {
         navigate("/");
-      }, 1000);
+      }, 3500);
     }
   }, [registered]);
 
@@ -79,14 +88,12 @@ const Signup = () => {
 
   return (
     <div className="mainPage">
+      <ToastContainer />
       <div className="container">
         <div className="logoContainer">
           <img src={login} alt="login_logo" className="loginLogo" />
         </div>
         <form className="signup_form" onSubmit={handleSignup}>
-          <div id="success" ref={successRef}>
-            Account successfully Registered!
-          </div>
           <TextField
             id="name"
             label="Name"

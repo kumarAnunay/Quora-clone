@@ -3,11 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { getItem } from "../../getUser";
 import NavBar from "../navBar/NavBar";
 import Footer from "../footer/Footer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddQuestion = ({ ques, setQues }) => {
   const [questionInput, setQuestionInput] = useState("");
   const userRef = useRef(getItem("user"));
   const navigate = useNavigate();
+  const [questionAdded, setQuestionAdded] = useState(false);
 
   useEffect(() => {
     if (!userRef.current?.islogged) {
@@ -34,17 +37,44 @@ const AddQuestion = ({ ques, setQues }) => {
         },
       ]);
       setQuestionInput("");
-      alert("Question added");
-      navigate("/questions");
+      toast.success("Question added", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setQuestionAdded(true);
     } else {
-      alert("Write your question in Input Box and a valid question");
+      toast.error("Write your question in Input Box and a valid question", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
   };
+
+  useEffect(() => {
+    if (questionAdded) {
+      setTimeout(() => {
+        navigate("/questions");
+      }, 3500);
+    }
+  }, [questionAdded]);
 
   return (
     <>
       <NavBar />
       <div className="questionContainer">
+        <ToastContainer />
         <input
           type="text"
           id="questionInput"

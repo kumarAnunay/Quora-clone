@@ -4,6 +4,8 @@ import { getItem } from "../../getUser";
 import NavBar from "../navBar/NavBar";
 import Sidebar from "../sidebar/Sidebar";
 import Footer from "../footer/Footer";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddAnswer = ({ ques, queAns, setQueAns }) => {
   const [answerInput, setAnswerInput] = useState("");
@@ -11,6 +13,7 @@ const AddAnswer = ({ ques, queAns, setQueAns }) => {
     question: "",
     questionedBy: "",
   });
+  const [answerAdded, setAnswerAdded] = useState(false);
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null);
   const userRef = useRef(getItem("user"));
   const inputRef = useRef("");
@@ -81,20 +84,48 @@ const AddAnswer = ({ ques, queAns, setQueAns }) => {
         },
       ]);
       setAnswerInput("");
-      alert("Answer added");
       setSelectedQuestionIndex(null);
-      navigate("/home");
+      toast.success("Answer added", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setAnswerAdded(true);
     } else {
-      alert(
-        "Please select a question from the questions list and write your answer."
+      toast.error(
+        "Please select a question from the questions list and write your answer.",
+        {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        }
       );
     }
   };
+
+  useEffect(() => {
+    if (answerAdded) {
+      setTimeout(() => {
+        navigate("/home");
+      }, 3500);
+    }
+  }, [answerAdded]);
 
   return (
     <>
       <NavBar />
       <div className="main iconsPages">
+        <ToastContainer />
         <div className="sidebar">
           <Sidebar />
         </div>
