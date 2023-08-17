@@ -66,12 +66,12 @@ const Sidebar = () => {
   return (
     <div className="sidebarOptions">
       <div
-        className={`sidebarOption ${
+        className={`sidebarOption createSpace ${
           activeSidebar === "createSpace" ? "sidebarActive" : ""
         }`}
         onClick={createSpace}
       >
-        <Add />
+        <Add className="addIcon" />
         <p>Create Space</p>
       </div>
 

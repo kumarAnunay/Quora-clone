@@ -229,7 +229,6 @@ button {
     width: 35px !important;
     padding: 5px;
     color: #5f5e5e;
-    background-color: #f4f4f4;
     border-radius: 50%;
     position: absolute;
     top: 5px;
@@ -262,8 +261,15 @@ button {
     width: 35px !important;
 }
 
+.menu {
+    color: #CD1818 !important;
+    height: 35px !important;
+    width: 35px !important;
+}
+
 .btn {
     display: flex;
+    align-items: center;
     gap: 30px;
 }
 
@@ -487,7 +493,7 @@ button {
 
 .headerIcons {
     display: flex;
-    gap: 15px;
+    gap: 20px;
 }
 
 .icon {
@@ -656,6 +662,7 @@ button {
 .sidebarOptions {
     display: flex;
     flex-direction: column;
+    width: max-content;
 }
 
 .sidebarOption {
@@ -686,6 +693,15 @@ button {
     margin-left: 10px;
     font-weight: 500;
     font-size: 13px;
+}
+
+.addIcon {
+    padding-left: 5px;
+    font-size: 20px !important;
+}
+
+.createSpace {
+    text-align: center;
 }
 
 .sidebarOption>.text {
@@ -943,13 +959,15 @@ button {
     .smallDevicesIcons {
         justify-content: space-between;
     }
+
+    .btn {
+        justify-content: space-between;
+        width: 100%;
+        padding-left: 10px;
+    }
 }
 
 @media (max-width: 335px) {
-
-    .btn {
-        gap: 20px;
-    }
 
     button {
         font-size: 12px;
@@ -959,6 +977,12 @@ button {
 @media (min-width: 577px) and (max-width: 800px) {
     .container {
         width: 60%;
+    }
+
+    .btn {
+        justify-content: space-between;
+        width: 100%;
+        padding-left: 10px;
     }
 
     .iconsPages {

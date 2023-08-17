@@ -4,13 +4,16 @@ import { useRef, useEffect, useState } from "react";
 import { getItem } from "../../getUser";
 import { auth } from "../../firebase";
 import logo from "../../assets/Quora-Logo.png";
-import { Avatar } from "@mui/material";
 import HomeIcon from "@mui/icons-material/Home";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import QuestionAnswerOutlinedIcon from "@mui/icons-material/QuestionAnswerOutlined";
 import GroupsIcon from "@mui/icons-material/Groups";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Tooltip from "@mui/material/Tooltip";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import MenuIcon from "@mui/icons-material/Menu";
 
 const NavBar = () => {
   const userRef = useRef(getItem("user"));
@@ -88,6 +91,15 @@ const NavBar = () => {
     navigate("/home");
   };
 
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
   return (
     <div className="headerContainer navBar">
       <div className="navbarIcons">
@@ -155,10 +167,29 @@ const NavBar = () => {
         >
           Add questions
         </button>
-
-        <button onClick={logoutHandler} className="logoutBttn">
-          <Avatar className="avatar logout" title="Logout" />
-        </button>
+        <div className="dropdownNav">
+          <Button
+            id="basic-button"
+            aria-controls={open ? "basic-menu" : undefined}
+            aria-haspopup="true"
+            aria-expanded={open ? "true" : undefined}
+            onClick={handleClick}
+          >
+            <MenuIcon className="menu" />
+          </Button>
+          <Menu
+            id="basic-menu"
+            anchorEl={anchorEl}
+            open={open}
+            onClose={handleClose}
+            MenuListProps={{
+              "aria-labelledby": "basic-button",
+            }}
+          >
+            <MenuItem>{userRef.current?.username}</MenuItem>
+            <MenuItem onClick={logoutHandler}>Logout</MenuItem>
+          </Menu>
+        </div>
       </div>
     </div>
   );
